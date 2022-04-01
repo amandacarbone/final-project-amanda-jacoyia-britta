@@ -2,6 +2,7 @@ import 'dotenv/config'
 import express from "express";
 import cors from "cors";
 import pg from 'pg-promise';
+import routes from "./userRoutes";
 
 const app = express();
 
@@ -17,5 +18,7 @@ export const db = pg()({
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/', routes)
 
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
