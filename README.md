@@ -18,7 +18,7 @@ React
 
 ## APIs
 
-TheMealDB
+[TheMealDB](https://www.themealdb.com/)
 
 ## Get Started
 
@@ -32,6 +32,6 @@ To run the app from the project directory:
 
 ## Contributors
 
-amandacarbone\
-brittacode\
-IamCoy
+[amandacarbone](https://github.com/amandacarbone)\
+[brittacode](https://github.com/brittacode)\
+[IamCoy](https://github.com/IamCoy)
