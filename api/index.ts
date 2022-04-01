@@ -1,7 +1,9 @@
+import 'dotenv/config'
 import express from "express";
 import cors from "cors";
 import pg from 'pg-promise';
 import routes from "./routes/authRoutes";
+import routes from "./userRoutes";
 
 const app = express();
 
@@ -11,12 +13,13 @@ export const db = pg()({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: '3YgJ4#zyVQ%TozKq',
+    password: process.env.SECRET,
     database: 'finalproject'
 });
 
 app.use(cors());
 app.use(express.json());
+app.use('/', routes);
 app.use('/', routes);
 
 app.listen(port, () => console.log(`Server is listening on port ${port}.`));
