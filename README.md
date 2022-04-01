@@ -18,7 +18,7 @@ TheMealDB
 
 ## Get Started by running `npm install`
 
-This project uses several node modules, you'll need them for the full "_experience_"
+This project uses several node modules. You'll need them for the full "_experience_".
 
 In the project directory, you can run:
 
