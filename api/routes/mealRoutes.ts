@@ -1,5 +1,5 @@
 import express from 'express'
-import { db } from '../api/index'
+import { db } from '../index'
 
 
 const routes = express.Router();

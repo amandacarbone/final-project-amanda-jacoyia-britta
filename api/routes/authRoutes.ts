@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
-const routes = express.Router();
+const authRoutes = express.Router();
 
 const schema = Joi.object({
     first_name: Joi.string().min(1).max(500).required(),
@@ -14,7 +14,7 @@ const schema = Joi.object({
     password: Joi.string().required().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'))
 });
 
-routes.post('/signup', (req, res) => {
+authRoutes.post('/signup', (req, res) => {
 
     const valid = schema.validate(req.body);
 
@@ -47,7 +47,7 @@ routes.post('/signup', (req, res) => {
 
 });
 
-routes.post('/login', (req, res) => {
+authRoutes.post('/login', (req, res) => {
 
     db.oneOrNone('SELECT id, email, password FROM users where email = $(email)', { email: req.body.email })
     .then(user => {
@@ -64,4 +64,4 @@ routes.post('/login', (req, res) => {
 
 });
 
-export default routes;
+export default authRoutes;
