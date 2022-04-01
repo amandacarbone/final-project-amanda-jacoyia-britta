@@ -24,7 +24,7 @@ In the project directory, you can run:
 
 ## `npm start`
 
-# Contributers
+## Contributors
 
 amandacarbone\
 brittacode\
