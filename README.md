@@ -6,7 +6,7 @@ Thoughtless helps to answer what is arguably one of the most difficult questions
 
 TypeScript\
 CSS\
-HTML\
+HTML
 
 ## Frameworks
 
@@ -28,4 +28,4 @@ In the project directory, you can run:
 
 amandacarbone\
 brittacode\
-IamCoy\
+IamCoy
