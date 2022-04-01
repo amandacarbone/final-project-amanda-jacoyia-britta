@@ -4,7 +4,9 @@ Thoughtless helps to answer what is arguably one of the most difficult questions
 
 ## Languages
 
-TypeScript, CSS, HTML
+TypeScript / 
+CSS /
+HTML /
 
 ## Frameworks
 
@@ -24,6 +26,6 @@ In the project directory, you can run:
 
 # Contributers
 
-amandacarbone
-brittacode
-IamCoy
+amandacarbone /
+brittacode /
+IamCoy /
