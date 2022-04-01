@@ -20,11 +20,15 @@ React
 
 TheMealDB
 
-## Get Started by running `npm install`
+## Get Started
 
-In the project directory, you can run:
+To install necessary package files:
 
-## `npm start`
+`npm install`
+
+To run the app from the project directory:
+
+`npm start`
 
 ## Contributors
 
