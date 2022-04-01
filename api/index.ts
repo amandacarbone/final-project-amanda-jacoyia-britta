@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import cors from "cors";
 import pg from 'pg-promise';
@@ -10,8 +11,8 @@ export const db = pg()({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: '',
-    database: ''
+    password: process.env.SECRET,
+    database: 'finalproject'
 });
 
 app.use(cors());
