@@ -1,4 +1,4 @@
-.loginContainer {
+.landingContainer {
     min-height: 100vh;
 }
 
@@ -30,4 +30,16 @@
 
 .buttonSpacer {
     height: 20px;
+}
+
+.food {
+    visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+
+    .food {
+        visibility: visible;
+    }
+    
 }
