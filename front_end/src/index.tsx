@@ -23,5 +23,4 @@ ReactDOM.render(
     </ThoughtlessContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
-    
 );
