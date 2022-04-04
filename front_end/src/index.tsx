@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home } from './components/Home';
-import SignUp from './components/Signup';
-import { Questions } from './components/Questions';
+import {Homepage} from './components/HomePage'
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
 import Login from './components/Login';
-import './index.css';
-
+import SignUp from './components/Signup';
+import { Home } from './components/Home';
+import { Questions } from './components/Questions';
 ReactDOM.render(
   <React.StrictMode>
     <ThoughtlessContextProvider>
@@ -22,6 +21,6 @@ ReactDOM.render(
     </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
-    </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>,
+  document.getElementById("root")
 );
