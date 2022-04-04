@@ -2,8 +2,8 @@ import {MealResponse} from "../models/mealResponse"
 import axios from  "axios"
 
 // gets meals based on ingredient
-export function getMealByIngrediant(
-    ingrediant: string,
+export function getMealByIngredient(
+    ingredient: string,
    
   ): Promise<MealResponse> {
     return axios
@@ -11,7 +11,7 @@ export function getMealByIngrediant(
         "https://www.themealdb.com/api/json/v1/1/filter.php",
         {
           params: {
-            i: ingrediant 
+            i: ingredient 
         }}
       )
       .then(response => {
