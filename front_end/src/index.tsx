@@ -8,6 +8,7 @@ import Login from './components/Login';
 import SignUp from './components/Signup';
 import { Home } from './components/Home';
 import { Questions } from './components/Questions';
+
 ReactDOM.render(
   <React.StrictMode>
     <ThoughtlessContextProvider>
@@ -18,7 +19,7 @@ ReactDOM.render(
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/questions' element={<Questions/>}/>
-    </Routes>
+      </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
   </React.StrictMode>,
