@@ -1,0 +1,4 @@
+api/node_modules
+api/.env.local
+
+front_end/node_modules
