@@ -35,4 +35,3 @@ To run the app from the project directory:
 [amandacarbone](https://github.com/amandacarbone)\
 [brittacode](https://github.com/brittacode)\
 [IamCoy](https://github.com/IamCoy)
-# test
