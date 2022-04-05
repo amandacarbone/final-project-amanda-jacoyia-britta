@@ -1,4 +1,4 @@
-import {Meal} from '../models/Meals'
+import { Meal } from "../models/mealResponse";
 
 
 
@@ -11,7 +11,7 @@ export function SearchResults(props:{meal:Meal}){
 
 return(
 
-<div className='resultsArea'>
+{/* <div className='resultsArea'>
 
 
     <div className='searchedMeals'> 
@@ -24,7 +24,7 @@ return(
         </ul> 
     </div>
 
-</div>
+</div> */}
 )
 
 }
