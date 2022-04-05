@@ -1,4 +1,4 @@
-import {Meal} from '../models/Meals'
+import {Meal} from '../models/mealResponse'
 
 
 
@@ -19,8 +19,7 @@ return(
         <ul> 
             <li>Meals {props.meal.strMeal}</li>
             <li><img alt='thumbnail url' src={(props.meal.strMealThumb)}/></li>
-        
-        
+
         </ul> 
     </div>
 

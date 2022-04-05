@@ -1,65 +1,71 @@
-import {MealResponse} from "../models/mealResponse"
-import axios from  "axios"
+import { MealResponse } from "../models/mealResponse"
+import axios from "axios"
 
 // gets meals based on ingredient
 export function getMealByIngrediant(
-    ingrediant: string,
-   
-  ): Promise<MealResponse> {
-    return axios
-      .get<any>(
-        "https://www.themealdb.com/api/json/v1/1/filter.php",
-        {
-          params: {
-            i: ingrediant 
-        }}
-      )
-      .then(response => {
-           
-        return response.data})
+  ingrediant: string,
+
+): Promise<MealResponse> {
+  return axios
+    .get<any>(
+      "https://www.themealdb.com/api/json/v1/1/filter.php",
+      {
+        params: {
+          i: ingrediant
+        }
+      }
+    )
+    .then(response => {
+
+      return response.data
+    })
 };
 
 // gets meals based on category
 export function getMealByCategory(
   category: string,
- 
+
 ): Promise<MealResponse> {
   return axios
     .get<any>(
       "https://www.themealdb.com/api/json/v1/1/filter.php",
       {
         params: {
-          c: category 
-      }}
+          c: category
+        }
+      }
     )
     .then(response => {
-         
-      return response.data})
+
+      return response.data
+    })
 };
 
 // gets meals based on cruisine
 export function getMealByArea(
   area: string,
- 
+
 ): Promise<MealResponse> {
   return axios
     .get<any>(
       "https://www.themealdb.com/api/json/v1/1/filter.php",
       {
         params: {
-          a: area 
-      }}
+          a: area
+        }
+      }
     )
     .then(response => {
-         
-      return response.data})
+
+      return response.data
+    })
 };
-  
+
 //displays all categories 
 export function getCategories(): Promise<MealResponse> {
-    return axios
-      .get<MealResponse>(
-        "https://www.themealdb.com/api/json/v1/1/categories.php",
-      )
-      .then((reponse) => reponse.data);
-  }
+  return axios
+    .get<MealResponse>(
+      "https://www.themealdb.com/api/json/v1/1/categories.php",
+    )
+    .then((reponse) => reponse.data);
+}

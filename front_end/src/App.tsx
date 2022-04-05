@@ -1,28 +1,21 @@
-<<<<<<< HEAD
 
 import './App.css';
 import { Homepage } from './components/HomePage';
 
-import React, { useContext } from 'react';
-import { ThoughtlessContext } from './context/ThoughtlessContext';
-import { Landing } from './components/Landing';
-=======
+
 import React from 'react';
->>>>>>> 321509d9a34af7ad1526e9e9547c62c641cdcb84
+import { SearchPage } from './components/SearchPage';
 
 function App() {
 
   return (
     <div className="App">
 
-<<<<<<< HEAD
-      <Homepage></Homepage>
-      <Landing/>
+      <SearchPage></SearchPage>
+     
 
       {/* {loggedUsers === true ? <Profile/> : <Login/>} */}
 
-=======
->>>>>>> 321509d9a34af7ad1526e9e9547c62c641cdcb84
     </div>
   );
 }
