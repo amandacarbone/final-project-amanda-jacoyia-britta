@@ -1,9 +1,16 @@
 export interface MealResponse {
-    meals: Meal[];
+    data: Meal[];
 }
 
 export interface Meal{
-    strMeal:string,
-    strMealThumb:string,
-    id:string
+    idMeal: number;
+    strMeal: string;
+    strDrinkAlternate: string;
+    strCategory: string;
+    strArea: string;
+    strInstructions: string;
+    strMealThumb: string;
+    strTags: string;
+    strIngredient: string;
+    strMeasure: string;
 }
