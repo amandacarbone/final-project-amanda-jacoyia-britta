@@ -43,7 +43,7 @@ export function SearchPage() {
             {results.map((meal:any, i:any) => <SearchResults key={i} meal={meal}></SearchResults>)}
         
      
-       
+    
         </div>
 
 
