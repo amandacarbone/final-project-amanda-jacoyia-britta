@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import express from "express";
-import cors from "cors";
+import cors from 'cors';
 import pg from 'pg-promise';
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";

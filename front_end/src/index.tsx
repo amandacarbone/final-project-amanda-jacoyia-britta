@@ -23,5 +23,5 @@ ReactDOM.render(
     </BrowserRouter>
     </ThoughtlessContextProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
