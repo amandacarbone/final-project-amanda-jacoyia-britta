@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ThoughtlessContext } from '../contexts/ThoughtlessContext';
 import { login } from '../services/Auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Lock from '@mui/icons-material/Lock';
+import { toast } from 'react-toastify';
+
 
 function Copyright(props: any) {
     return (
@@ -25,14 +27,15 @@ function Copyright(props: any) {
     );
 }
   
-const theme = createTheme();
-  
 export default function Login() {
+
+    const navigate = useNavigate();
 
     const { loggedUsers, loginUser } = useContext(ThoughtlessContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState(false);
 
     function handleLogin(event: any) {
 
@@ -44,6 +47,8 @@ export default function Login() {
     let password: string = formData.get('password') as string;
 
     login(email, password).then(() => loginUser())
+      .then(() => { navigate('/home'); setLoginError(false) })
+      .catch((error) => { console.log(error); setLoginError(true)})
 
     }
   

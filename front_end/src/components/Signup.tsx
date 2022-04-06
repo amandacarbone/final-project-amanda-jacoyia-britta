@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { ThoughtlessContext } from '../contexts/ThoughtlessContext';
 import { signUp } from '../services/Auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -28,23 +29,70 @@ export default function SignUp() {
 
     const { users, addUser } = useContext(ThoughtlessContext);
 
+    const navigate = useNavigate();
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const emailFormatError = () => 
+    toast.error("Invalid email or password", {
+      position: "top-right",
+      autoClose: 900,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+
+    const passwordFormatError = () => 
+    toast.error("Password must be at least 8 characters", {
+      position: "top-right",
+      autoClose: 900,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+
+    const passwordNoMatchError = () => 
+    toast.error("Passwords do not match", {
+      position: "top-right",
+      autoClose: 900,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+
+    const userExistError = () => 
+    toast.error("Passwords do not match", {
+      position: "top-right",
+      autoClose: 900,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
     
     function handleSignUp(event: any) {
     
         event.preventDefault();
-    
+        // Creates an object of { key: value } pairs 
+        // from the form inputs that comprise the query
         let formData = new FormData(event.currentTarget);
-    
         let first_name: string = formData.get('first_name') as string;
         let last_name: string = formData.get('last_name') as string;
         let email: string = formData.get('email') as string;
         let password: string = formData.get('password') as string;
     
-        signUp(first_name, last_name, email, password).then(newUser => addUser(newUser));
+        signUp(first_name, last_name, email, password)
+        .then(newUser => addUser(newUser));
     
         setFirstName('');
         setLastName('');
@@ -90,6 +138,7 @@ export default function SignUp() {
                     margin="normal"
                     required
                     fullWidth
+                    autoFocus
                     id="firstName"
                     label="First Name"
                     name="firstName"
@@ -116,7 +165,6 @@ export default function SignUp() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    autoFocus
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
@@ -137,7 +185,7 @@ export default function SignUp() {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2, background: '#939393' }}
-                >
+                  >
                     Sign Up
                 </Button>
               <Grid container>
