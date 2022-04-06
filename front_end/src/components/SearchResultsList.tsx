@@ -11,10 +11,12 @@ export function SearchResultsList(props:{meals:Meal[]}){
 
 return(
 
-<div className='resultsArea'>
+<div >
 
 
-    <div className='searchedMeals'>
+    <div >
+    
+    How About this?
 
         {props.meals.map(meal => <Result key={meal.idMeal} meal={meal}/>)}
         

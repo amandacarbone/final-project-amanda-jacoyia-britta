@@ -1,5 +1,5 @@
 export interface MealResponse {
-    data: Meal[];
+    meals: Meal[];
 }
 
 export interface Meal{

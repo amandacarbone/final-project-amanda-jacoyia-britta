@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import { getMealByingredient } from "../services/api";
+import { getMealByCategory, getMealByIngredient, getMealByArea} from "../services/api";
 import { Result } from "./Result";
 import { SearchForm } from "./SearchForm";
+import { SearchResultsList } from "./SearchResultsList";
 
 export function SearchPage() {
 
@@ -15,15 +16,28 @@ export function SearchPage() {
 
 
     useEffect(() => {
-        if (searchItem) {
-            getMealByingredient(searchItem).then(response => {
+        // if(searchItem === "chicken" || "beef" || "dessert" || "seafood" || "vegan" || "miscellaneous" || "lamb" || "pasta" || "side" || "starter" || "goat" || "vegetarian" || "goat")
+        // {
+        // getMealByCategory(searchItem).then(data => setResults(data.meals));
+        // } 
+        // else if (searchItem === "american" || "british" || "canadian" || "chinese" || "croatian" || "dutch" || "egyptian" || "french" || "greek" || "indian" || "irish" || "italian" || "jamaican" || "japanese" || "kenyan" || "mexican" || "malaysian" || "moroccan" || "spanish" || "thai" || "turkish" || "polish" || "portuguese" || "russian" || "tunisian" || "unknown" || "vietnamese")
+        // {
+        //     getMealByArea(searchItem).then(data => setResults(data.meals))
+        // }else {
+        //     getMealByingredient(searchItem).then((data: { meals: any; }) => setResults(data.meals))
+        // }
+
+
+        if (searchItem.length > 3) {
+            getMealByCategory(searchItem).then(response => {
+                setResults(response.meals)
                 console.log(results)
-                console.log(searchItem)
-                setResults(response.data.meals);
+                console.log(searchItem);
+               
             });
                 
         }
-    }, []);
+    }, [searchItem]);
 
 
 
@@ -40,7 +54,9 @@ export function SearchPage() {
         */}
        
        <SearchForm onSubmit={setSearchItem}></SearchForm>
-       <Result meal={results}></Result>
+       <SearchResultsList meals={results}></SearchResultsList>
+
+       {/* {console.log(getMealByArea("american"))} */}
        
         </div>
 
