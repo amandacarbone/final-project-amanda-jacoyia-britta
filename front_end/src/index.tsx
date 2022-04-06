@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {Homepage} from './components/HomePage'
+
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
 import Login from './components/Login';
 import SignUp from './components/Signup';
