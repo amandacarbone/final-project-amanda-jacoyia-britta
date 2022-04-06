@@ -16,7 +16,7 @@ return(
 
     <div className='searchedMeals'>
 
-        {props.meals && props.meals.map((meal: any, i: any) => <Result key={i} meal={meal}/>)}
+        {props.meals.map(meal => <Result key={meal.idMeal} meal={meal}/>)}
         
     </div>
 
