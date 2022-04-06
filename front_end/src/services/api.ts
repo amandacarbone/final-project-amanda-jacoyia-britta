@@ -46,3 +46,16 @@ export function getCategories(): Promise<MealResponse> {
     .get<any>("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((reponse) => reponse.data);
 }
+
+// gets full meal detail by id
+export function getMealById(id: string): Promise<any> {
+  return axios
+    .get<any>("https://www.themealdb.com/api/json/v1/1/lookup.php", {
+      params: {
+        i: id,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    });
+}
