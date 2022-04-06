@@ -28,8 +28,8 @@ export function SearchPage() {
         // }
 
 
-        if (searchItem.length > 3) {
-            getMealByCategory(searchItem).then(response => {
+        if (searchItem.length) {
+            getMealByIngredient(searchItem).then(response => {
                 setResults(response.meals)
                 console.log(results)
                 console.log(searchItem);

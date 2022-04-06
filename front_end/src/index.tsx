@@ -4,7 +4,7 @@ import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
 import Login from './components/Login';
-import { Homepage } from './components/HomePage'
+import { Home } from './components/HomePage'
 import SignUp from './components/Signup';
 import { Questions } from './components/Questions';
 import { SearchPage } from './components/SearchPage';
