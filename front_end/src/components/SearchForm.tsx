@@ -6,6 +6,7 @@ export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
 
     function submission() {
         props.onSubmit(input);
+        console.log('form working');
     }
 
     return (

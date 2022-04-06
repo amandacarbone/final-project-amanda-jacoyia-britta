@@ -1,8 +1,8 @@
-import { MealResponse } from "../models/mealResponse";
+import { Meal, MealResponse } from "../models/mealResponse";
 import axios from "axios";
 
 // gets meals based on ingredient
-export function getMealByingredient(ingredient: string): Promise<MealResponse> {
+export function getMealByIngredient(ingredient: string): Promise<MealResponse> {
   return axios
     .get<any>("https://www.themealdb.com/api/json/v1/1/filter.php", {
       params: {
@@ -28,7 +28,7 @@ export function getMealByCategory(category: string): Promise<MealResponse> {
 }
 
 // gets meals based on cruisine
-export function getMealByArea(area: string): Promise<MealResponse> {
+export function getMealByArea(area: string): Promise<any> {
   return axios
     .get<any>("https://www.themealdb.com/api/json/v1/1/filter.php", {
       params: {
@@ -43,6 +43,6 @@ export function getMealByArea(area: string): Promise<MealResponse> {
 //displays all categories
 export function getCategories(): Promise<MealResponse> {
   return axios
-    .get<MealResponse>("https://www.themealdb.com/api/json/v1/1/categories.php")
+    .get<any>("https://www.themealdb.com/api/json/v1/1/categories.php")
     .then((reponse) => reponse.data);
 }
