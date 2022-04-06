@@ -8,6 +8,7 @@ import Login from './components/Login';
 import SignUp from './components/Signup';
 import { Home } from './components/Home';
 import { Questions } from './components/Questions';
+import { SearchPage } from './components/SearchPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/home' element={<Home/>}/>
       <Route path='/questions' element={<Questions/>}/>
+      <Route path='/search' element={<SearchPage/>}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
