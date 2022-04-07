@@ -1,8 +1,8 @@
-a {
-    text-decoration: none;
-    color: #FFFFFF;
+body {
+  background-color: aqua;
 }
 
-a:hover {
-    color: #000000;
+.thumbimg {
+  height: 200px;
+  width: 200px;
 }
