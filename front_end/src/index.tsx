@@ -4,10 +4,11 @@ import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
 import Login from './components/Login';
-import { Home } from './components/HomePage'
 import SignUp from './components/Signup';
 import { Questions } from './components/Questions';
 import { SearchPage } from './components/SearchPage';
+import { Profile } from './components/Profile';
+import { ProfileDetails } from './components/ProfileDetail';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,9 +19,10 @@ ReactDOM.render(
       <Route path='/' element={<Login/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
-      <Route path='/home' element={<Homepage/>}/>
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/search' element={<SearchPage/>}/>
+      <Route path='/profile' element={<Profile/>}/>
+      <Route path='/profile/:id' element={<ProfileDetails />}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
