@@ -1,29 +1,54 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { User } from '../models/User';
 
-export function signUp(
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string
-) {
-    return axios
-    .post(`http://localhost:3005/signup`, {
-        first_name: first_name,
-        last_name: last_name,
-        email: email,
-        password: password
+export function signUp() {
+    var signupFormData = new FormData();
+
+    signupFormData.append("first_name", "");
+    signupFormData.append("last_name", "");
+    signupFormData.append("email", "");
+    signupFormData.append("password", "");
+
+    return axios({
+        method: "post",
+        url: "http://localhost:3005/signup",
+        data: signupFormData,
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     })
-    .then((response) => response.data)
+    .then(function (response) {
+        // handle success
+        console.log(response);
+        return response.data;
+    })
+    .catch(function (response) {
+        // handle error
+        console.log(response);
+    })
 }
 
-export function login(
-    email: string,
-    password: string
-) {
-    return axios
-    .post(`http://localhost:3005/login`, {
-        email: email,
-        password: password
+export function login() {
+    var loginFormData = new FormData();
+
+    loginFormData.append("email", "");
+    loginFormData.append("password", "");
+
+    return axios({
+        method: "post",
+        url: "http://localhost:3005/login",
+        data: loginFormData,
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     })
-    .then((response) => response.data)
+    .then(function (response) {
+        // handle success
+        console.log(response);
+        return response.data;
+    })
+    .catch(function (response) {
+        // handle error
+        console.log(response);
+    });
 }

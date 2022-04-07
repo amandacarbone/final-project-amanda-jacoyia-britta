@@ -8,7 +8,7 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
 
     const [users, setUsers] = useState<User[]>([]);
     const [favoriteMeals, setFavoriteMeals] = useState<Meal[]>([]);
-    const [loggedUsers, setLoggedUser] = useState<boolean>(false);
+    // const [loggedUsers, setLoggedUser] = useState<boolean>(false);
 
     const favoriteAdded = () => toast.success('Favorite Added', {
         position: 'top-right',
@@ -34,9 +34,9 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
         setUsers([...users, user])
     }
 
-    function loginUser() {
-        setLoggedUser(true)
-    }
+    // function loginUser() {
+    //     setLoggedUser(true)
+    // }
 
     function addFavorite(favoriteMeal: Meal) {
         if (!favoriteMeals?.some((addedMeal: Meal): boolean => {
@@ -56,9 +56,9 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
 
         <ThoughtlessContext.Provider value={{ 
             users, 
-            loggedUsers, 
+            // loggedUsers, 
             addUser, 
-            loginUser, 
+            // loginUser, 
             favoriteMeals, 
             addFavorite, 
             removeFavorite
