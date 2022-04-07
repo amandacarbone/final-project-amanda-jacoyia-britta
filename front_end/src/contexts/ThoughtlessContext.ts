@@ -5,9 +5,9 @@ import { createContext } from "react";
 export interface ThoughtlessContextModel {
     users: User[];
     favoriteMeals: Meal[];
-    loggedUsers: boolean;
+    // loggedUsers: boolean;
     addUser: (user: User) => void;
-    loginUser: () => void;
+    // loginUser: () => void;
     addFavorite: (favoriteMeal: Meal) => void;
     removeFavorite: (idMeal: number) => void;
 };
@@ -15,9 +15,9 @@ export interface ThoughtlessContextModel {
 const defaultValue: ThoughtlessContextModel = {
     users: [],
     favoriteMeals: [],
-    loggedUsers: false,
+    // loggedUsers: false,
     addUser: () => {},
-    loginUser: () => {},
+    // loginUser: () => {},
     addFavorite: () => {},
     removeFavorite: () => {}
 };

@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
-import Login from './components/Login';
+import { Login } from './components/Login';
+import { Home } from './components/Home';
 import SignUp from './components/Signup';
 import { Questions } from './components/Questions';
 import { SearchPage } from './components/SearchPage';
@@ -19,6 +20,7 @@ ReactDOM.render(
       <Route path='/' element={<Login/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
+      <Route path='/home' element={<Home/>}/>
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/search' element={<SearchPage/>}/>
       <Route path='/profile' element={<Profile/>}/>
