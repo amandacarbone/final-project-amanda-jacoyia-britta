@@ -27,7 +27,7 @@ ReactDOM.render(
       <Route path='/search' element={<SearchPage/>}/>
       {/* <Route path='/profile' element={<Profile/>}/>
       <Route path='/profile/:id' element={<ProfileDetails />}/> */}
-      <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
+      <Route path='/recipedetail' element={<RecipeDetail/>}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
