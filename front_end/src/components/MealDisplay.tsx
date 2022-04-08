@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Meal } from "../models/mealResponse";
-import { getMealByArea, getMealById } from "../services/api";
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
