@@ -1,5 +1,6 @@
 import { Meal, MealResponse } from "../models/mealResponse";
 import axios from "axios";
+import { AnyARecord } from "dns";
 
 // gets meals based on ingredient
 export function getMealByIngredient(ingredient: string): Promise<MealResponse> {
