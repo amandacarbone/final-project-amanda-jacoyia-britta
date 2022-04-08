@@ -31,7 +31,7 @@ authRoutes.post('/signup', (req, res) => {
         password: hash
     }
 
-    db.oneOrNone('SELECT id, email from users where email = $(email)', { email: req.body.email })
+    db.oneOrNone('SELECT id, email FROM users WHERE email = $(email)', { email: req.body.email })
     .then(user => {
         if(user) {
             return res.status(400).send("An account associated with this email already exists.")
@@ -48,15 +48,20 @@ authRoutes.post('/signup', (req, res) => {
 });
 
 authRoutes.post('/login', (req, res) => {
+    
+    const userLoginInput = {
+        email: req.body.email,
+        password: req.body.password
+    }
 
-    db.oneOrNone('SELECT id, email, password FROM users where email = $(email)', { email: req.body.email })
+    db.oneOrNone('SELECT id, email, password FROM users WHERE email = $(email)', { email: req.body.email })
     .then(user => {
         if(!user) {
             return res.status(400).send("Invalid email or password.")
         }
 
         console.log(user);
-        if (!bcrypt.compareSync(req.body.password, user.password)) {
+        if (!bcrypt.compareSync(userLoginInput.password, user.password)) {
             return res.status(400).send("Invalid email or password.")
         }
         res.json(user);

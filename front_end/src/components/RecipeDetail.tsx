@@ -16,7 +16,6 @@ export function RecipeDetail(){
         console.log(result.data)
 
     }
-    
 
     return(
 

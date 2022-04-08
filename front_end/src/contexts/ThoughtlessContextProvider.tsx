@@ -34,10 +34,6 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
         setUsers([...users, user])
     }
 
-    function loginUser() {
-        setLoggedUser(true)
-    }
-
     function addFavorite(favoriteMeal: Meal) {
         if (!favoriteMeals?.some((addedMeal: Meal): boolean => {
             return addedMeal.idMeal === favoriteMeal.idMeal
@@ -57,8 +53,7 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
         <ThoughtlessContext.Provider value={{ 
             users, 
             loggedUsers, 
-            addUser, 
-            loginUser, 
+            addUser,
             favoriteMeals, 
             addFavorite, 
             removeFavorite
