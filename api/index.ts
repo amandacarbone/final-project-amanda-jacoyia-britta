@@ -13,7 +13,7 @@ export const db = pg()({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: `${process.env.SECRET_KEY}`,
+    password: process.env.SECRET_KEY,
     database: 'finalproject'
 });
 
