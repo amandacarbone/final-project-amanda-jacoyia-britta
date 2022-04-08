@@ -27,12 +27,10 @@ export default function SignUp() {
 
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
-    });
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const emailFormatError = () => 
     toast.error("Invalid email or password", {
@@ -77,22 +75,15 @@ export default function SignUp() {
       draggable: true,
       progress: undefined,
     });
-
-    function handleChange(e: any) {
-      const value = e.target.value;
-    
-      setFormData({
-        ...formData,
-        [e.target.name]: value
-      });
-    };
     
     function handleSubmit(e: any) {
-    
-        e.preventDefault();
-        
 
-    
+      e.preventDefault();
+      signUp(firstName, lastName, email, password).then((data: any) => {
+        if (data) console.log(data);
+      });
+      navigate('/questions');
+      
     }
 
   return (
@@ -135,8 +126,8 @@ export default function SignUp() {
                     id="firstName"
                     label="First Name"
                     name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                 />
                 <TextField
                     variant='standard'
@@ -146,8 +137,8 @@ export default function SignUp() {
                     id="lastName"
                     label="Last Name"
                     name="lastName"
-                    value={formData.lastName}
-                    onChange={handleChange}
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
                 />
                 <TextField
                     variant='standard'
@@ -158,8 +149,8 @@ export default function SignUp() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                 />
                 <TextField
                     variant='standard'
@@ -170,8 +161,8 @@ export default function SignUp() {
                     label="Password"
                     type="password"
                     id="password"
-                    value={formData.password}
-                    onChange={handleChange}
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
                 />
                 <Button
                     type="submit"
