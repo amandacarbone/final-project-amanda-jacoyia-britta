@@ -32,10 +32,8 @@ export function Login() {
 
 const navigate = useNavigate();
 
-const [formData, setFormData] = useState({
-  email: '',
-  password: ''
-});
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
 const loginError = () =>
 toast.error("Invalid email or password", {
@@ -48,20 +46,14 @@ toast.error("Invalid email or password", {
   progress: undefined,
 });
 
-function handleChange(e: any) {
-  const value = e.target.value;
-
-  setFormData({
-    ...formData,
-    [e.target.name]: value
-  });
-};
-
 function handleSubmit(e: any) {
 
   e.preventDefault();
-
-  console.log('handleSubmit Login: ', login());
+  login(email, password).then((data: any) => {
+    if (data) console.log(data);
+  });
+  navigate('/home');
+  
 }
   
 return (
@@ -113,8 +105,8 @@ return (
               </InputAdornment>
             )
             }}
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
           <TextField
             variant='standard'
@@ -132,8 +124,8 @@ return (
                 </InputAdornment>
               )
             }}
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <Button
             type="submit"
