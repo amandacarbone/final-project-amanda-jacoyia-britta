@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { getMealByCategory } from '../../services/api';
 import { Meal } from '../../models/mealResponse';
 import {
+    Grid,
     Typography,
+    Stack,
+    Button,
     Radio,
     RadioGroup,
     FormControl,
@@ -26,7 +29,7 @@ export function Diet() {
     return (
         <React.Fragment>
             <Typography variant="h6" align='center' gutterBottom>
-                What are you cooking?
+                What are your dietary preferences?
             </Typography>
             <FormControl>
                 <RadioGroup name='radio-buttons-group'>

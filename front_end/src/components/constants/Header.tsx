@@ -102,9 +102,14 @@ export function Header() {
     {
       name: 'Log Out',
       icon: <LogoutIcon/>,
-      onClick: () => navigate('/login')
+      onClick: () => handleLogOut()
     }
   ]
+
+  function handleLogOut() {
+    localStorage.clear();
+    navigate('/login');
+  }
 
 return (
     <Box sx={{ display: 'flex' }}>

@@ -4,3 +4,11 @@ export interface Category {
     strCategoryThumb: string,
     strCategoryDescription: string
 }
+
+export interface CategoryFilter {
+    meals: [{
+        strMeal: string,
+        strMealThumb: string,
+        idMeal: string
+    }]
+}
