@@ -41,7 +41,7 @@ export function Header() {
           <Button color="inherit"> <NavLink to='/home'>Home</NavLink></Button>
           <Button color="inherit"> <NavLink to='/favorites'>Favorites</NavLink></Button>
           <Button color="inherit"> <NavLink to='/recipedetail'>Recipes</NavLink></Button>
-          <Button color="inherit"> <NavLink to={'profile/' + loggedInUser.id}>My Profile</NavLink></Button>
+          <Button color="inherit"> <NavLink to={'profile/' + loggedInUser!.id}>My Profile</NavLink></Button>
           <Button color="inherit" onClick={handleLogOut}><NavLink to='/login'>Log Out</NavLink></Button>
         </Toolbar>
       </AppBar>
