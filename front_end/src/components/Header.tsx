@@ -12,7 +12,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 
 export function Header() {
-  const [loggedIn, setLoggedIn] = useState({});
+ 
+  function handleLogOut() {
+    localStorage.clear();
+  }
 
   let storedUser = localStorage.getItem('user');
 
@@ -34,12 +37,12 @@ export function Header() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Thoughtless
           </Typography>
-          <Button color="inherit"> <NavLink to='/'>Login In</NavLink></Button>
           <Button color="inherit"> <NavLink to='/search'>Search</NavLink></Button>
           <Button color="inherit"> <NavLink to='/home'>Home</NavLink></Button>
           <Button color="inherit"> <NavLink to='/favorites'>Favorites</NavLink></Button>
           <Button color="inherit"> <NavLink to='/recipedetail'>Recipes</NavLink></Button>
           <Button color="inherit"> <NavLink to={'profile/' + loggedInUser.id}>My Profile</NavLink></Button>
+          <Button color="inherit" onClick={handleLogOut}><NavLink to='/login'>Log Out</NavLink></Button>
         </Toolbar>
       </AppBar>
     </Box>
