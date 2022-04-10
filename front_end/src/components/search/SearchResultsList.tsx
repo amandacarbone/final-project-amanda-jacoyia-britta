@@ -1,4 +1,4 @@
-import {Meal} from '../models/mealResponse';
+import {Meal} from '../../models/mealResponse';
 import { Result } from './Result';
 
 

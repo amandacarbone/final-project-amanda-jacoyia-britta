@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { User } from "../models/User";
-import { getUsers } from "../services/Users";
+import { User } from "../../models/User";
+import { getUsers } from "../../services/Users";
 
 
 export function ProfileDetails() {

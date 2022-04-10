@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Meal } from "../models/mealResponse";
+import { Meal } from "../../models/mealResponse";
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
