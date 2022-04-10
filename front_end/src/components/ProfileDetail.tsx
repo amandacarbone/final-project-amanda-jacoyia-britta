@@ -6,13 +6,13 @@ import "../css/profileDetail.css";
 
 export function ProfileDetails() {
   const [user, setUser] = useState<User[]>([]);
-  const [updateFirstName, setUpdateFirstName] = useState<User[]>([]);
-  const [updateLastName, setUpdateLastName] = useState<User[]>([]);
-  const [updateEmail, setUpdateEmail] = useState<User[]>([]);
-  const [updatePassword, setUpdatePassword] = useState<User[]>([]);
-  const [isVegan, setIsVegan] = useState<User[]>([]);
-  const [isVegetarian, setIsVegetarian] = useState<User[]>([]);
-  const [isPescatarian, setIsPescatarian] = useState<User[]>([]);
+  // const [updateFirstName, setUpdateFirstName] = useState<User[]>([]);
+  // const [updateLastName, setUpdateLastName] = useState<User[]>([]);
+  // const [updateEmail, setUpdateEmail] = useState<User[]>([]);
+  // const [updatePassword, setUpdatePassword] = useState<User[]>([]);
+  // const [isVegan, setIsVegan] = useState<User[]>([]);
+  // const [isVegetarian, setIsVegetarian] = useState<User[]>([]);
+  // const [isPescatarian, setIsPescatarian] = useState<User[]>([]);
 
   function findById(id: number) {
     const foundUser = user.find((user) => user.id === id);
@@ -47,10 +47,13 @@ export function ProfileDetails() {
           <li>
             <NavLink to="/favorites"> Saved Recipes</NavLink>
           </li>
-          <li>
-            Dietary Preferences: <span className="bold-diet">Vegan</span>
+         
+          <li> 
+            <NavLink to="/update"> Update Password </NavLink>
           </li>
-          <li>lorem ipsum</li>
+          <li className="bold-diet">
+            Dietary Preferences:{userDetail?.isvegan ? <span className="bold">Vegan</span>   : ""} {userDetail?.isvegetarian ? <span className="bold">Vegetarian</span> : ""}{userDetail?.ispescatarian ? <span className="bold">Pescataroan</span> : ""}
+          </li>
           <li>lorem ipsum</li>
         </ul>
       </div>
@@ -68,10 +71,6 @@ export function ProfileDetails() {
           <label htmlFor="email">Email</label>
         </h3>
         <input type="text" name="email" value={userDetail?.email} />
-        <h3>
-          <label htmlFor="email">Password</label>
-        </h3>
-        <input type="text" name="password" placeholder="********" />
         <h3>
           <label htmlFor="preferences">Dietary Preferences</label>
         </h3>

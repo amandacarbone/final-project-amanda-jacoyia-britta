@@ -12,6 +12,7 @@ import { SearchPage } from './components/SearchPage';
 import { Profile } from './components/Profile';
 import { ProfileDetails } from './components/ProfileDetail';
 import { RecipeDetail } from './components/RecipeDetail';
+import { Update } from './components/Update';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,7 +28,8 @@ ReactDOM.render(
       <Route path='/search' element={<SearchPage/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/profile/:id' element={<ProfileDetails />}/>
-      <Route path='/recipedetail' element={<RecipeDetail/>}/>
+      <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
+      <Route path='/update' element={<Update/>}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>

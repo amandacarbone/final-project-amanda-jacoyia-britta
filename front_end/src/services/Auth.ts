@@ -24,3 +24,16 @@ export function login(email: string, password: string) {
         return res.data
     });
 }
+
+export function updateBasics(first_name: string, last_name: string, email: string) {
+    return axios
+    .put('http://localhost:3005/update', {
+        first_name: first_name,
+        last_name: last_name,
+        email: email
+      
+    })
+    .then((res: AxiosResponse<User>): User => {
+        return res.data
+    });
+}

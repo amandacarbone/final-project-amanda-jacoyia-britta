@@ -12,11 +12,9 @@ export function SearchPage() {
     const [noResults, setNoResults] = useState('');
 
 
-
-    //This will use the services page to get the search results
-
-
-    useEffect(() => {
+   
+   //This will use the services page to get the search results
+  useEffect(() => {
         // if(!searchItem){
         //     setNoResults('No recipes found with that name, please try again')
         // }
