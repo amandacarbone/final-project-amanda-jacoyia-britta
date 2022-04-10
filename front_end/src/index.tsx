@@ -28,6 +28,7 @@ ReactDOM.render(
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/profile/:id' element={<ProfileDetails />}/>
       <Route path='/recipedetail' element={<RecipeDetail/>}/>
+      
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>

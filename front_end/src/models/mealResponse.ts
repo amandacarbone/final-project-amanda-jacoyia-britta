@@ -17,4 +17,3 @@ export interface Meal {
     strMeasure: string;
 
 }
-

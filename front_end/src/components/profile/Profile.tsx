@@ -13,6 +13,7 @@ export function Profile(){
 
     return(
         <div>
+           
             <Header></Header>
         </div>
     )
