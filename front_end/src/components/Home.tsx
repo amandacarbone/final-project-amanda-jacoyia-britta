@@ -4,18 +4,13 @@ import { useEffect, useState } from "react";
 import { Meal } from "../models/mealResponse";
 import { getMealByArea } from "../services/api";
 import { MealDisplay } from "./MealDisplay";
+import { RecipeDetail } from "./RecipeDetail";
 
 
 
 export function Home() {
 
-
-   
-      
-
     const [area, setArea] = useState<Meal[]>([])
-
-
 
     useEffect (()=>{
 
@@ -23,7 +18,6 @@ export function Home() {
     } ,[])
 
     return (
-
 
         <div className='homepage'>
             

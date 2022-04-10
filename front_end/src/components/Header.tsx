@@ -9,8 +9,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useState } from 'react';
 
 export function Header() {
+  const [loggedIn, setLoggedIn] = useState({});
+
+  let storedUser = localStorage.getItem('user');
+
+  let loggedInUser = JSON.parse(storedUser!); 
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -32,6 +39,7 @@ export function Header() {
           <Button color="inherit"> <NavLink to='/home'>Home</NavLink></Button>
           <Button color="inherit"> <NavLink to='/favorites'>Favorites</NavLink></Button>
           <Button color="inherit"> <NavLink to='/recipedetail'>Recipes</NavLink></Button>
+          <Button color="inherit"> <NavLink to={'profile/' + loggedInUser.id}>My Profile</NavLink></Button>
         </Toolbar>
       </AppBar>
     </Box>
