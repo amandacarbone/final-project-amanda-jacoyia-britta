@@ -14,14 +14,16 @@ export function SearchPage() {
 
     const [searchItem, setSearchItem] = useState('');
     const [results, setResults] = useState <any>([]);
+    const [noResults, setNoResults] = useState('');
 
 
-
-    //This will use the services page to get the search results
-
-
-    useEffect(() => {
-        // if(searchItem === "chicken" || "beef" || "dessert" || "seafood" || "vegan" || "miscellaneous" || "lamb" || "pasta" || "side" || "starter" || "goat" || "vegetarian" || "goat")
+   
+   //This will use the services page to get the search results
+  useEffect(() => {
+        // if(!searchItem){
+        //     setNoResults('No recipes found with that name, please try again')
+        // }
+        // else if(searchItem === "chicken" || "beef" || "dessert" || "seafood" || "vegan" || "miscellaneous" || "lamb" || "pasta" || "side" || "starter" || "goat" || "vegetarian" || "goat")
         // {
         // getMealByCategory(searchItem).then(data => setResults(data.meals));
         // } 
@@ -29,7 +31,7 @@ export function SearchPage() {
         // {
         //     getMealByArea(searchItem).then(data => setResults(data.meals))
         // }else {
-        //     getMealByingredient(searchItem).then((data: { meals: any; }) => setResults(data.meals))
+        //     getMealByIngredient(searchItem).then((data: { meals: any; }) => setResults(data.meals))
         // }
 
 
@@ -58,6 +60,7 @@ export function SearchPage() {
        
        <SearchForm onSubmit={setSearchItem}></SearchForm>
        <SearchResultsList meals={results}></SearchResultsList>
+         <p>{noResults}</p>
 
        {/* {console.log(getMealByArea("american"))} */}
        
