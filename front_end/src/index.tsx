@@ -11,7 +11,7 @@ import { Questions } from './components/questions/Questions';
 import { SearchPage } from './components/search/SearchPage';
 import { Profile } from './components/profile/Profile';
 import { ProfileDetails } from './components/profile/ProfileDetail';
-import { RecipeDetail } from './components/recipeDetail/RecipeDetail';
+import { RecipeDetail } from './components/recipes/RecipeDetail';
 
 ReactDOM.render(
   <React.StrictMode>
