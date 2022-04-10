@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Meal } from "../models/mealResponse";
+import { Meal } from "../../models/mealResponse";
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -18,11 +18,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { RecipeDetail } from "./../recipes/RecipeDetail";
 
 
 
 
-const cards = [1, 2, 3];
+const cards = [1];
 // 2, 3, 4, 5, 6, 7, 8, 9
 
 const theme = createTheme();
@@ -80,7 +81,7 @@ export function MealDisplay(props:{meal:Meal}) {
                     </Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Button size="small">Recipe</Button>
+                    <Button size="small"><RecipeDetail></RecipeDetail></Button>
                     {/* <Button size="small"></Button> */}
                   </CardActions>
                 </Card>
@@ -90,8 +91,8 @@ export function MealDisplay(props:{meal:Meal}) {
         </Container>
       </main>
    
-
-   <button > Recipe details</button>
+        
+   
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Meal } from "../models/mealResponse";
+import { Meal } from "../../models/mealResponse";
 
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';

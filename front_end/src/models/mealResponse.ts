@@ -15,4 +15,5 @@ export interface Meal {
     strTags: string;
     strIngredient: string;
     strMeasure: string;
+
 }

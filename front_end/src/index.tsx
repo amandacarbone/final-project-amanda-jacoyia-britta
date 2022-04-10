@@ -4,15 +4,15 @@ import App from './App';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ThoughtlessContextProvider } from './contexts/ThoughtlessContextProvider';
-import { Login } from './components/Login';
-import { Home } from './components/Home';
-import SignUp from './components/Signup';
-import { Questions } from './components/Questions';
-import { SearchPage } from './components/SearchPage';
-import { Profile } from './components/Profile';
-import { ProfileDetails } from './components/ProfileDetail';
-import { RecipeDetail } from './components/RecipeDetail';
-import { Update } from './components/Update';
+import { Login } from './components/account/Login';
+import { Home } from './components/home/Home';
+import { SignUp } from './components/account/Signup';
+import { Questions } from './components/questions/Questions';
+import { SearchPage } from './components/search/SearchPage';
+import { Profile } from './components/profile/Profile';
+import { ProfileDetails } from './components/profile/ProfileDetail';
+import { RecipeDetail } from './components/recipes/RecipeDetail';
+import { Update } from './components/profile/Update';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +30,8 @@ ReactDOM.render(
       <Route path='/profile/:id' element={<ProfileDetails />}/>
       <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
       <Route path='/update' element={<Update/>}/>
+      <Route path='/recipedetail' element={<RecipeDetail/>}/>
+      
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>

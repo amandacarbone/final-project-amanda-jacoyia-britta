@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { User } from "../models/User";
-import { getUsers } from "../services/Users";
-import "../css/profileDetail.css";
+import { User } from "../../models/User";
+import { getUsers } from "../../services/Users";
+import "../../styles/profileDetail.css";
+
 
 export function ProfileDetails() {
   const [user, setUser] = useState<User[]>([]);
