@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react"
-import { getMealByCategory, getMealByIngredient, getMealByArea, getMealById} from "../services/api";
+import { 
+    getMealByCategory, 
+    getMealByIngredient, 
+    getMealByArea, 
+    getMealById
+} from "../../services/api";
 import { Result } from "./Result";
 import { SearchForm } from "./SearchForm";
 import { SearchResultsList } from "./SearchResultsList";

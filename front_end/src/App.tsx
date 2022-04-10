@@ -1,10 +1,8 @@
 
 import './App.css';
 import React, { useContext } from 'react';
-import { toast } from 'react-toastify';
-
-import { Header } from './components/Header';
-import { Home } from './components/Home';
+import { Header } from './components/constants/Header';
+import { Home } from './components/home/Home';
 
 
 function App() {
@@ -12,7 +10,6 @@ function App() {
   return (
     <div className="App">
     <Header></Header>
-
     </div>
   );
 }

@@ -1,10 +1,10 @@
 
 
 import { useEffect, useState } from "react";
-import { Meal } from "../models/mealResponse";
-import { getMealByArea } from "../services/api";
+import { Meal } from "../../models/mealResponse";
+import { getMealByArea } from "../../services/api";
 import { MealDisplay } from "./MealDisplay";
-import { RecipeDetail } from "./RecipeDetail";
+import { RecipeDetail } from "./../recipes/RecipeDetail";
 
 
 

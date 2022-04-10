@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Meal } from "../models/mealResponse";
+import { Meal } from "../../models/mealResponse";
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -18,7 +18,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { RecipeDetail } from "./RecipeDetail";
+import { RecipeDetail } from "./../recipes/RecipeDetail";
 
 
 
