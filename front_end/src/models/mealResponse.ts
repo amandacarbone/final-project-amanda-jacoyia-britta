@@ -5,7 +5,7 @@ export interface MealResponse {
 }
 
 export interface Meal {
-    idMeal: number;
+    idMeal: string;
     strMeal: string;
     strDrinkAlternate: string;
     strCategory: string;

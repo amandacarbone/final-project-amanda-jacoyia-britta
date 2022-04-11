@@ -10,11 +10,12 @@ import { RecipeDetail } from "./../recipes/RecipeDetail";
 
 export function Home() {
 
-    const [area, setArea] = useState<Meal[]>([])
+    const [area, setArea] = useState<Meal[]>([]);
 
     useEffect (()=>{
 
         getMealByArea('American').then(repsonse => setArea(repsonse.meals))
+
     } ,[])
 
     return (
@@ -24,8 +25,6 @@ export function Home() {
             {area.map((meal ) => < MealDisplay key={meal.idMeal} meal={meal}></MealDisplay>)}
            
         </div>
-
-       
         
     );
 
