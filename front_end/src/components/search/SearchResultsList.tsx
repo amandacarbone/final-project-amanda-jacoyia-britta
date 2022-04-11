@@ -11,7 +11,7 @@ return(
 <div>
     <div>
     
-    How About this?
+    {/* How About this? */}
 
         {props.meals.map(meal => <Result key={meal.idMeal} meal={meal}/>)}
         
