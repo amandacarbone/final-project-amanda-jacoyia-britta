@@ -16,28 +16,30 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { RecipeDetail } from "../recipes/RecipeDetail";
+import { Recipes } from "../recipes/Recipes";
+import { useEffect, useState } from "react";
 
-export function Result(props: { meal: Meal }) {
 
 
-    const cards = [1 ];
+const cards = [1 ];
 
 
 const theme = createTheme();
 
+export function Result(props: { meal: Meal }) {
+
+  const [meal, setMeal] = useState(props.meal);
+
+  useEffect(() => {
+    setMeal(props.meal)
+  }, [props])
+
+
     return (
-
-
 
         <div className="meal">
            
-            {/* {props.meal.strMeal}
-            {props.meal.strIngredient}
-            <img src={props.meal.strMealThumb} alt="meal thumb"/> */}
-
-
-
+  
 
             <main>
             <Container sx={{ py: 8 }} maxWidth="md">
@@ -61,14 +63,16 @@ const theme = createTheme();
                     <Typography gutterBottom variant="h5" component="h2">
                       {props.meal.strMeal}
                     </Typography>
+
                     <Typography>
-                      This is a media card. You can use this section to describe the
-                      content.
+                    
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">recipe<RecipeDetail></RecipeDetail></Button>
-                    <Button size="small">Edit</Button>
+                     
+
+                     <Button size="small">recipe</Button>
+                    
                   </CardActions>
                 </Card>
               </Grid>
@@ -80,3 +84,7 @@ const theme = createTheme();
     );
 
 }
+
+{/* {props.meal.strMeal}
+            {props.meal.strIngredient}
+            <img src={props.meal.strMealThumb} alt="meal thumb"/> */}
