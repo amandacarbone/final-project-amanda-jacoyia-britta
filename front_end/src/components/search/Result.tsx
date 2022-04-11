@@ -67,7 +67,7 @@ const theme = createTheme();
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">recipe<RecipeDetail></RecipeDetail></Button>
+                    <Button size="small">recipe</Button>
                     <Button size="small">Edit</Button>
                   </CardActions>
                 </Card>

@@ -1,17 +1,19 @@
 
 import './App.css';
-import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Header } from './components/constants/Header';
-import { Home } from './components/home/Home';
 
 
 function App() {
 
-  return (
-    <div className="App">
-    <Header></Header>
-    </div>
-  );
+  const location = useLocation();
+
+  if (location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup') {
+    return null
+  } else {
+    return <Header/>
+  }
+
 }
 
 export default App;
