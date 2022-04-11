@@ -1,28 +1,34 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Meal } from "../../models/mealResponse";
+import { getMealById } from "../../services/api";
 
 
 export function RecipeDetail(){
 
-    const [recipe, setRecipe] = useState([]);
-    
+    const [recipe, setRecipe] = useState<Meal[]>([]);
 
-
-    const api = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`;
-
-    async function getMealById() {
-
-        let result = await axios.get(api);
-        console.log(result.data)
-
+    function findById(id: string) {
+        const foundRecipe = recipe.find((recipe) => recipe.idMeal === id);
+        return foundRecipe ? foundRecipe : undefined;
     }
+    
+    useEffect(() => {
+        getMealById(id!).then((data) => {
+            setRecipe(data.meals)
+        })
+    }, [])
+
+    const id: string | undefined = useParams().id;
+
+    const recipeDetail = findById(id!);
 
     return(
 
         <div className='details'>
-            <h3 onClick={getMealById}> Test</h3>
-
+            <h3>{recipeDetail?.strMeal}</h3>
+            <p>{recipeDetail?.strInstructions}</p>
         </div>
 
     )

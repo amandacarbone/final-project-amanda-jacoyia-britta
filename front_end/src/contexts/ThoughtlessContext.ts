@@ -8,7 +8,7 @@ export interface ThoughtlessContextModel {
     loggedUsers: boolean;
     addUser: (user: User) => void;
     addFavorite: (favoriteMeal: Meal) => void;
-    removeFavorite: (idMeal: number) => void;
+    removeFavorite: (idMeal: string) => void;
 };
 
 const defaultValue: ThoughtlessContextModel = {

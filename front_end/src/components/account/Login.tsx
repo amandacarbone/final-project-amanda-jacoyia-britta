@@ -83,6 +83,7 @@ return (
               }}
               variant='standard'
               margin="normal"
+              autoFocus
               required
               fullWidth
               id="email"

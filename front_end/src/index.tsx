@@ -30,7 +30,6 @@ ReactDOM.render(
       <Route path='/profile/:id' element={<ProfileDetails />}/>
       <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
       <Route path='/update' element={<Update/>}/>
-      <Route path='/recipedetail' element={<RecipeDetail/>}/>
       
       </Routes>
     </BrowserRouter>

@@ -16,7 +16,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { RecipeDetail } from "./RecipeDetail";
+import { RecipeDetail } from "../recipes/RecipeDetail";
 
 export function Result(props: { meal: Meal }) {
 
