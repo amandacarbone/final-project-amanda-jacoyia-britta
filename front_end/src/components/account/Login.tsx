@@ -37,6 +37,7 @@ function handleSubmit(e: any) {
   e.preventDefault();
   login(email, password).then((data: any) => {
     if (data) console.log(data);
+    localStorage.setItem("user", JSON.stringify(data));
   });
   navigate('/home');
   

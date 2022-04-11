@@ -64,6 +64,10 @@ export function Header() {
 
   const [open, setOpen] = useState(false);
 
+  let storedUser = localStorage.getItem('user');
+
+  let loggedInUser = JSON.parse(storedUser!); 
+
   const questionsNav = [
     {
       name: 'Questions',
@@ -87,6 +91,10 @@ export function Header() {
       name: 'Favorites',
       icon: <FavoriteIcon/>,
       onClick: () => navigate('/favorites')
+    },
+    {
+      name: 'Profile',
+      onClick: () => navigate('/profile/' + loggedInUser.id)
     }
   ]
   
