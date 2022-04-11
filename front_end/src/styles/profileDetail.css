@@ -62,3 +62,15 @@
  .profile-side .bold {
   font-weight: bold;
  }
+
+ .password-update{
+     margin-top: 60px;
+     padding-top: 50px;
+     padding-left: 50px;
+     background-color: #fefbe9;
+     height: 100vh;
+ }
+
+ .password-update input{
+    border: 2px solid black;
+ }

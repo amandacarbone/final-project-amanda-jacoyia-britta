@@ -6,5 +6,6 @@ export interface User {
     password: string
     isvegan: boolean,
     isvegetarian: boolean,
-    ispescatarian: boolean
+    ispescatarian: boolean,
+    join_date: string
 };
