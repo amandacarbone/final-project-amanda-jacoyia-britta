@@ -17,6 +17,11 @@ import '../../styles/Account.css';
   
 export function Login() {
 
+const navigate = useNavigate();
+
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+
 const validationSchema = yup.object().shape({
   email: yup.string()
   .required('Please enter an email address')
@@ -26,11 +31,6 @@ const validationSchema = yup.object().shape({
   .required('Please enter a password')
   .matches(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'), 'Password must be at least 8 characters and contain one lowercase letter, one uppercase letter, one number, and one special character (#?!@$%^&*-)')
 });
-
-const navigate = useNavigate();
-
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
 
 function handleSubmit(e: any) {
 
@@ -57,7 +57,7 @@ return (
           backgroundPosition: 'center',
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ background: '#ff8896'}}>
+      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ background: '#ff8896' }}>
         <Box
           sx={{
             my: 8,

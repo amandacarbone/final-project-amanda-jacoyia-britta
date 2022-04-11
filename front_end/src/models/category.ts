@@ -6,9 +6,9 @@ export interface Category {
 }
 
 export interface CategoryFilter {
-    meals: [{
-        strMeal: string,
-        strMealThumb: string,
-        idMeal: string
-    }]
+    chicken: boolean,
+    beef: boolean,
+    seafood: boolean,
+    vegetarian: boolean,
+    everything: boolean
 }

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signUp } from '../../services/Auth';
 import { getUsers } from '../../services/Users';
 import * as yup from "yup";
+import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik'
 import { 
   Button,
   CssBaseline,
@@ -15,6 +16,13 @@ import {
 import '../../styles/Account.css';
 
 export function SignUp() {
+
+const navigate = useNavigate();
+
+const [firstName, setFirstName] = useState('');
+const [lastName, setLastName] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
 const validationSchema = yup.object().shape({
   first_name: yup.string()
@@ -36,13 +44,6 @@ const validationSchema = yup.object().shape({
   .required('Please enter a password')
   .matches(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'), 'Password must be at least 8 characters and contain one lowercase letter, one uppercase letter, one number, and one special character (#?!@$%^&*-)')
 });
-
-const navigate = useNavigate();
-
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
     
 function handleSubmit(e: any) {
 

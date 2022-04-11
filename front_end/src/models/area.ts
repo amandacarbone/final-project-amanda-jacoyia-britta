@@ -5,9 +5,9 @@ export interface Area {
 }
 
 export interface AreaFilter {
-    meals: [{
-        strMeal: string,
-        strMealThumb: string,
-        idMeal: string
-    }]
+    american: boolean,
+    mexican: boolean,
+    asian: boolean,
+    indian: boolean,
+    mediterranean: boolean
 }
