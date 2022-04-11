@@ -70,27 +70,7 @@ authRoutes.post('/login', (req, res) => {
 });
 
 
-//working on creating an endpoint to update user info.
-// authRoutes.put('/update/:id', (req, res) => {
-
-  
-
-
-//     const updatedUser = {
-//         first_name: req.body.first_name,
-//         last_name: req.body.last_name,
-//         email: req.body.email
-//     }
-
-
-//         db.one('UPDATE users SET ($(first_name), $(last_name), $(email)  WHERE id = $(id)) RETURNING id, first_name, last_name, email', updatedUser)
-//         .then((id) => {
-//             return db.oneOrNone('SELECT id, first_name, last_name, email from users where id = $(id)', { id: req.params.id })
-//             .then(user => res.status(201).json(user))
-//             .catch(error => console.log(error))
-//         });
-//     });
-
+    
 
 
 export default authRoutes;
