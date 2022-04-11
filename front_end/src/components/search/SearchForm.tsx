@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
     
     const [input, setInput] = useState('');
@@ -11,9 +15,23 @@ export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
 
     return (
         <div className="searchForm">
-            <input type="text" value={input} onChange={(e) => setInput(e.target.value)}/>
-            <button onClick={submission}>Search</button>
+
+<Box
+      sx={{
+        width: 500,
+        maxWidth: '100%',
+      }}
+    >
+       
+            
+      <TextField fullWidth label="Search" id="fullWidth"  value={input} onChange={(e) => setInput(e.target.value)}/>
+      <button onClick={submission}>Submit</button>
+    </Box>
+            
         </div>
     );
 
 }
+
+
+

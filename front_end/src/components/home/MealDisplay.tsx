@@ -87,8 +87,8 @@ export function MealDisplay(props:{meal:Meal}) {
                     </Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Link to={`/recipedetail/${meal.idMeal}`}>TEST</Link>
-                    {/* <Button size="small"></Button> */}
+                  <Button size="small"><Link to={`/recipedetail/${meal.idMeal}`}>Recipe</Link></Button>
+                    {/*  */}
                   </CardActions>
                 </Card>
               </Grid>
