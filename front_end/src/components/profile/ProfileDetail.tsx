@@ -37,6 +37,9 @@ export function ProfileDetails() {
   updateBasics(userDetail!.id, updateFirstName, updateLastName, updateEmail).then((data: any) => {
     updateComplete();
     console.log("updated")
+    // setUpdateFirstName(updateFirstName);
+    // setUpdateLastName(updateLastName);
+    // setUpdateEmail(updateEmail);
   });
  
   
@@ -62,7 +65,7 @@ export function ProfileDetails() {
               {" "}
               {userDetail?.first_name} {userDetail?.last_name}
             </h4>
-            <p>Joined: YYYY-MM-DD</p>
+            <p>Joined: {userDetail?.join_date}</p>
           </div>
         </div>
 

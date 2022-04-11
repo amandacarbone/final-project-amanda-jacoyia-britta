@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signUp } from '../../services/Auth';
 import { getUsers } from '../../services/Users';
 import * as yup from "yup";
-import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik'
+import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { 
   Button,
   CssBaseline,
@@ -50,6 +50,7 @@ function handleSubmit(e: any) {
   e.preventDefault();
   signUp(firstName, lastName, email, password).then((data: any) => {
     if (data) console.log(data);
+    localStorage.setItem("user", JSON.stringify(data));
   });
   navigate('/questions');
       
