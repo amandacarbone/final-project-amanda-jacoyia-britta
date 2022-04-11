@@ -27,8 +27,15 @@ export function RecipeDetail(){
     return(
 
         <div className='details'>
+
+        <img src={recipeDetail?.strMealThumb} alt="random" />
+
+        
             <h3>{recipeDetail?.strMeal}</h3>
+
+            <p>{recipeDetail?.strIngredient}</p>
             <p>{recipeDetail?.strInstructions}</p>
+            
         </div>
 
     )

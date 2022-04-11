@@ -13,6 +13,9 @@ export function Recipes(){
         const foundRecipe = recipe.find((recipe) => recipe.idMeal === id);
         return foundRecipe ? foundRecipe : undefined;
     }
+
+   
+
     
     useEffect(() => {
         getMealById(id!).then((data) => {
@@ -22,15 +25,15 @@ export function Recipes(){
 
     const id: string | undefined = useParams().id;
 
-    const recipeDetail = findById(id!);
+    const recipeResult = findById(id!);
 
     return(
 
         <div className='details'>
 
-            <img src={recipeDetail?.strMealThumb} alt="random" />
-            <h3>{recipeDetail?.strMeal}</h3>
-            <p>{recipeDetail?.strInstructions}</p>
+            <img src={recipeResult?.strMealThumb} alt="random" />
+            <h3>{recipeResult?.strMeal}</h3>
+            <p>{recipeResult?.strInstructions}</p>
         </div>
 
     )

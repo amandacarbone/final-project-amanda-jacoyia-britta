@@ -13,7 +13,7 @@ body {
 }
 
 .searchForm {
-  border: blue solid 1px;
+  /* border: blue solid 1px; */
   margin-top: 150px;
   text-align: center;
   display: flex;
@@ -21,5 +21,8 @@ body {
 }
 
 .meal {
-  border: red solid 1px;
+  /* border: red solid 1px; */
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
 }
