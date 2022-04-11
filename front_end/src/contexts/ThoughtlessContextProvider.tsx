@@ -43,7 +43,7 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
         }
     }
 
-    function removeFavorite(idMeal: number) {
+    function removeFavorite(idMeal: string) {
         setFavoriteMeals(favoriteMeals.filter((f) => f.idMeal != idMeal));
         favoriteRemoved();
     }

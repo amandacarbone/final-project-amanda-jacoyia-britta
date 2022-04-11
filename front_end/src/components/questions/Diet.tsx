@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getMealByCategory } from '../../services/api';
 import { Meal } from '../../models/mealResponse';
 import {
-    Grid,
     Typography,
-    Stack,
-    Button,
     Radio,
     RadioGroup,
     FormControl,
@@ -15,16 +12,6 @@ import {
 export function Diet() {
 
     const [categories, setCategories] = useState(null);
-
-    useEffect(() => {
-        const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php`;
-
-        fetch(apiUrl)
-            .then((res) => res.json())
-            .then((response) => {
-                setCategories(response.strMeal)
-            })
-    }, [setCategories])
 
     return (
         <React.Fragment>

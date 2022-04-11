@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Meal } from "../../models/mealResponse";
 
 import * as React from 'react';
@@ -16,7 +17,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { RecipeDetail } from "./../recipes/RecipeDetail";
 
@@ -29,6 +29,12 @@ const cards = [1];
 const theme = createTheme();
 
 export function MealDisplay(props:{meal:Meal}) {
+
+  const [meal, setMeal] = useState(props.meal);
+
+  useEffect(() => {
+    setMeal(props.meal)
+  }, [props])
 
 
 
@@ -69,19 +75,19 @@ export function MealDisplay(props:{meal:Meal}) {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image={props.meal.strMealThumb}
+                    image={meal?.strMealThumb}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                    {props.meal.strMeal}
+                    {meal?.strMeal}
                     </Typography>
                     {/* <Typography>
                       {props.meal.strIngredient}
                     </Typography> */}
                   </CardContent>
                   <CardActions>
-                    <Button size="small"><RecipeDetail></RecipeDetail></Button>
+                    <Link to={`/recipedetail/${meal.idMeal}`}>TEST</Link>
                     {/* <Button size="small"></Button> */}
                   </CardActions>
                 </Card>
