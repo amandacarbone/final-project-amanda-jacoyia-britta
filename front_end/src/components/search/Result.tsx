@@ -42,7 +42,7 @@ export function Result(props: { meal: Meal }) {
   
 
             <main>
-            <Container sx={{ py: 8 }} maxWidth="md">
+            <Container sx={{ py: 8 }} maxWidth="md" >
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
