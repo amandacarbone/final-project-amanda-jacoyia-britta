@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/Auth';
-import * as yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
 import { 
   Button, 
   CssBaseline,
@@ -9,10 +9,13 @@ import {
   Grid,
   Paper,
   Box,
-  TextField
+  TextField,
+  IconButton
 } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Lock from '@mui/icons-material/Lock';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import '../../styles/Account.css';
   
 export function Login() {
@@ -21,20 +24,29 @@ const navigate = useNavigate();
 
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [showPassword, setShowPassword] = useState(false);
 
-const validationSchema = yup.object().shape({
-  email: yup.string()
-  .required('Please enter an email address')
-  .email('Invalid email format'),
-
-  password: yup.string()
-  .required('Please enter a password')
-  .matches(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'), 'Password must be at least 8 characters and contain one lowercase letter, one uppercase letter, one number, and one special character (#?!@$%^&*-)')
+const loginError = () =>
+toast.error("Invalid email or password", {
+  position: "top-right",
+  autoClose: 900,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: false,
+  draggable: true,
+  progress: undefined,
 });
+
+function togglePasswordVisibility() {
+  
+  setShowPassword(showPassword ? false : true);
+
+};
 
 function handleSubmit(e: any) {
 
   e.preventDefault();
+  
   login(email, password).then((data: any) => {
     localStorage.setItem("user", JSON.stringify(data));
   });
@@ -43,7 +55,7 @@ function handleSubmit(e: any) {
 }
   
 return (
-  <Grid container component="main" sx={{ height: '100vh' }}>
+  <Grid container component='main' sx={{ height: '100vh' }}>
     <CssBaseline />
       <Grid
         item
@@ -57,7 +69,15 @@ return (
           backgroundPosition: 'center',
         }}
       />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ background: '#ff8896' }}>
+      <Grid 
+        item 
+        xs={12} 
+        sm={8} 
+        md={5} 
+        component={Paper} 
+        elevation={6} 
+        square 
+        sx={{ background: '#ff8896' }}>
         <Box
           sx={{
             my: 8,
@@ -74,6 +94,8 @@ return (
           />
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
+              autoFocus
+              fullWidth
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
@@ -82,43 +104,51 @@ return (
                 )
               }}
               variant='standard'
-              margin="normal"
-              autoFocus
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
+              margin='normal'
+              id='email'
+              name='email'
+              label='Email'
+              type='email'
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <TextField
+              fullWidth
               InputProps={{
                 startAdornment: (
                   <InputAdornment position='start'>
                     <Lock/>
                   </InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                    </IconButton>
+                  </InputAdornment>
                 )
               }}
               variant='standard'
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
+              margin='normal'
+              id='password'
+              name='password'
+              label='Password'
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
             <Button
-              type="submit"
               fullWidth
-              variant="contained"
+              type='submit'
+              variant='contained'
               sx={{ mt: 3, mb: 2, background: '#939393' }}
             >
               Login
             </Button>
+            <ToastContainer/>
             <Grid container>
               <Grid item>
                 <Link to='/signup'>

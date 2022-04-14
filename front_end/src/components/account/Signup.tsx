@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signUp } from '../../services/Auth';
 import { getUsers } from '../../services/Users';
 import * as yup from "yup";
-import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
 import { 
   Button,
   CssBaseline,
@@ -11,8 +10,11 @@ import {
   Paper,
   Box,
   Grid,
-  Typography
+  InputAdornment,
+  IconButton
 } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import '../../styles/Account.css';
 
 export function SignUp() {
@@ -23,6 +25,7 @@ const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [showPassword, setShowPassword] = useState(false);
 
 const validationSchema = yup.object().shape({
   first_name: yup.string()
@@ -44,6 +47,12 @@ const validationSchema = yup.object().shape({
   .required('Please enter a password')
   .matches(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$'), 'Password must be at least 8 characters and contain one lowercase letter, one uppercase letter, one number, and one special character (#?!@$%^&*-)')
 });
+
+function togglePasswordVisibility() {
+  
+  setShowPassword(showPassword ? false : true);
+
+};
     
 function handleSubmit(e: any) {
 
@@ -57,7 +66,7 @@ function handleSubmit(e: any) {
 }
 
 return (
-  <Grid container component="main" sx={{ height: '100vh' }}>
+  <Grid container component='main' sx={{ height: '100vh' }}>
     <CssBaseline />
       <Grid
         item
@@ -88,55 +97,66 @@ return (
           />
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
-              variant='standard'
-              margin="normal"
-              required
               fullWidth
               autoFocus
-              id="firstName"
-              label="First Name"
-              name="firstName"
+              variant='standard'
+              margin='normal'
+              id='firstName'
+              name='firstName'
+              label='First Name'
+              type='text'
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
             />
             <TextField
-              variant='standard'
-              margin="normal"
-              required
               fullWidth
-              id="lastName"
-              label="Last Name"
-              name="lastName"
+              variant='standard'
+              margin='normal'
+              id='lastName'
+              name='lastName'
+              label='Last Name'
+              type='text'
               value={lastName}
               onChange={e => setLastName(e.target.value)}
             />
             <TextField
-              variant='standard'
-              margin="normal"
-              required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
+              variant='standard'
+              margin='normal'
+              id='email'    
+              name='email'
+              label='Email'
+              type='email'
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <TextField
-              variant='standard'
-              margin="normal"
-              required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
+              variant='standard'
+              margin='normal'
+              id='password'
+              name='password'
+              label='Password'
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={e => setPassword(e.target.value)}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position='end'>
+                    <IconButton
+                      aria-label='toggle password visibility'
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
             />
             <Button
-              type="submit"
               fullWidth
-              variant="contained"
+              type='submit'
+              variant='contained'
               sx={{ mt: 3, mb: 2, background: '#939393' }}
             >
               Sign Up
