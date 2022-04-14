@@ -21,6 +21,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LogoutIcon from '@mui/icons-material/Logout';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
@@ -94,6 +95,7 @@ export function Header() {
     },
     {
       name: 'Profile',
+      icon: <AccountCircleIcon/>,
       onClick: () => navigate('/profile/' + loggedInUser.id)
     }
   ]
