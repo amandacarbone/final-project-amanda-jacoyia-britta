@@ -22,9 +22,18 @@ export function QuestionResults({category, area}: QuestionProps) {
         });
     }, [category, area]);
 
+    function handleMealResults (e:any)  {
+        setMealResults(e.target.value)
+
+    }
+
     return (
         <div>
+
+
             {mealResults.map((meal) => <QuestionResultItem meal={meal} key={meal.idMeal}/>)}
+            
+
         </div>
     );
 
