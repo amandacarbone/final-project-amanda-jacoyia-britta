@@ -31,6 +31,8 @@ body {
   list-style-type: none;
 }
 
-.homecontainer {
-  display: inline-block;
+.homeContainer {
+  margin-top: 60px;
+
+  border: solid red 2px;
 }

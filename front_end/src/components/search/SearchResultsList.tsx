@@ -10,13 +10,13 @@ export function SearchResultsList(props:{meals:Meal[]}){
 return(
 
 <div>
-    <div>
+ 
     
     {/* How About this? */}
 
         {props.meals.map(meal => <MealDisplay key={meal.idMeal} meal={meal}/>)}
         
-    </div>
+   
 </div>
 )
 

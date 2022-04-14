@@ -42,47 +42,42 @@ export function MealDisplay(props:{meal:Meal}) {
 
 
     <div className='homeContainer'>
-     
-      <main>
-       
-        <Container sx={{ py: 8 }} maxWidth="md">
+
+<Container sx={{ py: 8 }} maxWidth="md" >
           {/* End hero unit */}
-          <Grid container spacing={4}>
+          <Grid container spacing={2}
+          direction="row"
+          justifyContent="center"
+          alignItems="center" >
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card} xs={12} sm={8} md={6}>
                 <Card
-                  sx={{ height: '100%', display: 'inline-block', flexDirection: 'column' }}
-                >
-                  <CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image={meal?.strMealThumb}
-                    alt="random"
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                    {meal?.strMeal}
-                    </Typography>
-                    {/* <Typography>
-                      {props.meal.strIngredient}
-                    </Typography> */}
-                  </CardContent>
-                  <CardActions>
-                  <Button size="small"><Link to={`/recipedetail/${meal.idMeal}`}>Recipe</Link></Button>
-                    {/*  */}
-                  </CardActions>
-                </Card>
+                  sx={{maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}
+             >
+      <CardMedia
+        component="img"
+        height="300"
+        image={meal?.strMealThumb}
+        alt="recipeDetails"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        {meal.strMeal}
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary">
+        {meal?.strCategory}
+        </Typography>
+      </CardContent>
+      <CardActions> 
+      <Button size="small" className='recipebutton'><Link to={`/recipedetail/${meal?.idMeal}`}>Recipe</Link></Button>
+      </CardActions>
+      </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
-      </main>
-   
-        
-   
+     
     </div>
   );
 }

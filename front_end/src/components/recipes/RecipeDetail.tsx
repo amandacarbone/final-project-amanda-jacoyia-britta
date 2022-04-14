@@ -51,8 +51,17 @@ export function RecipeDetail(){
 
         <div className='details'>
 
-
-<Card sx={{ maxWidth: 345 }}>
+<Container sx={{ py: 8 }} maxWidth="md" >
+          {/* End hero unit */}
+          <Grid container spacing={2}
+          direction="row"
+          justifyContent="center"
+          alignItems="center" >
+            {cards.map((card) => (
+              <Grid item key={card} xs={12} sm={8} md={6}>
+                <Card
+                  sx={{maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}
+             >
       <CardMedia
         component="img"
         height="300"
@@ -63,8 +72,16 @@ export function RecipeDetail(){
         <Typography gutterBottom variant="h5" component="div">
         {recipeDetail?.strMeal}
         </Typography>
+
+        
+        <Typography>
+        {recipeDetail?.strCategory}
+        </Typography>
+
+
         <Typography variant="body2" color="text.secondary">
         <div className='ingredientlist'>
+        
                    <li>{recipeDetail?.strIngredient1}  {recipeDetail?.strMeasure1}</li>
                   <li>{recipeDetail?.strIngredient2}  {recipeDetail?.strMeasure2}</li>
                   <li>{recipeDetail?.strIngredient3}  {recipeDetail?.strMeasure3}</li>
@@ -89,11 +106,14 @@ export function RecipeDetail(){
                    {recipeDetail?.strInstructions}
         </Typography>
       </CardContent>
-      <CardActions>
-        
+      <CardActions> 
       <Button size="small" className='recipebutton'><Link to={`/recipedetail/${recipeDetail?.idMeal}`}>Recipe</Link></Button>
       </CardActions>
-    </Card>
+      </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
     </div>
   );
 }    
