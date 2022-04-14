@@ -1,5 +1,6 @@
 import {Meal} from '../../models/mealResponse';
-import { Result } from './Result';
+import { MealDisplay } from '../home/MealDisplay';
+//import { Result } from './Result';
 
 
 
@@ -13,7 +14,7 @@ return(
     
     {/* How About this? */}
 
-        {props.meals.map(meal => <Result key={meal.idMeal} meal={meal}/>)}
+        {props.meals.map(meal => <MealDisplay key={meal.idMeal} meal={meal}/>)}
         
     </div>
 </div>

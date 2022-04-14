@@ -52,30 +52,19 @@ export function RecipeDetail(){
         <div className='details'>
 
 
-           
-      <main>
-       
-       <Container sx={{ py: 8 }} maxWidth="md">
-         {/* End hero unit */}
-         <Grid container spacing={4}>
-           {cards.map((card) => (
-             <Grid item key={card} xs={12} sm={6} md={4}>
-               <Card
-                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-               >
-                 <CardMedia
-                   component="img"
-                   sx={{
-                     // 16:9
-                     pt: '56.25%',
-                   }}
-                   image={recipeDetail?.strMealThumb}
-                   alt="random"
-                 />
-                 <CardContent sx={{ flexGrow: 1 }}>
-                   <Typography gutterBottom variant="h5" component="h2">
-                   {recipeDetail?.strMeal}
-                   </Typography>
+<Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        component="img"
+        height="300"
+        image={recipeDetail?.strMealThumb}
+        alt="recipeDetails"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+        {recipeDetail?.strMeal}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+        <div className='ingredientlist'>
                    <li>{recipeDetail?.strIngredient1}  {recipeDetail?.strMeasure1}</li>
                   <li>{recipeDetail?.strIngredient2}  {recipeDetail?.strMeasure2}</li>
                   <li>{recipeDetail?.strIngredient3}  {recipeDetail?.strMeasure3}</li>
@@ -90,27 +79,74 @@ export function RecipeDetail(){
                   <li>{recipeDetail?.strIngredient12}  {recipeDetail?.strMeasure12}</li>
                   <li>{recipeDetail?.strIngredient13}  {recipeDetail?.strMeasure13}</li>
                   <li>{recipeDetail?.strIngredient14}  {recipeDetail?.strMeasure14}</li>
+                  <li>{recipeDetail?.strIngredient15}  {recipeDetail?.strMeasure15}</li>
+                  <li>{recipeDetail?.strIngredient16}  {recipeDetail?.strMeasure16}</li>
+                  <li>{recipeDetail?.strIngredient17}  {recipeDetail?.strMeasure17}</li>
+                  <li>{recipeDetail?.strIngredient18}  {recipeDetail?.strMeasure18}</li>
+                  <li>{recipeDetail?.strIngredient19}  {recipeDetail?.strMeasure19}</li>
+                  <li>{recipeDetail?.strIngredient20}  {recipeDetail?.strMeasure20}</li>
+                  </div>
+                   {recipeDetail?.strInstructions}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        
+      <Button size="small" className='recipebutton'><Link to={`/recipedetail/${recipeDetail?.idMeal}`}>Recipe</Link></Button>
+      </CardActions>
+    </Card>
+    </div>
+  );
+}    
+
+
+           
+      {/* <main>
+       
+       <Container sx={{ py: 8 }} maxWidth="md">
+         {/* End hero unit */}
+         {/* <Grid container spacing={4}>
+           {cards.map((card) => (
+             <Grid item key={card} xs={12} sm={6} md={4}> */}
+               {/* <Card
+                 sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+               >
+                 <CardMedia  */}
+
+
+                   {/* component="img"
+                   sx={{
+                     // 16:9
+                     pt: '56.25%',
+                   }}
+                   
+                   image=
+                   alt="random" */}
+                 {/* />
+                 <CardContent sx={{ flexGrow: 1 }}>
+                   <Typography gutterBottom variant="h5" component="h2">
+                   
+                   </Typography>
+                    */}
                    {/* <Typography>
                      {props.meal.strIngredient}
                    </Typography> */}
-                   {recipeDetail?.strInstructions}
+                   {/* {recipeDetail?.strInstructions}
                  </CardContent>
                  <CardActions>
-                 <Button size="small"><Link to={`/recipedetail/${recipeDetail?.idMeal}`}>Recipe</Link></Button>
                    {/*  */}
-                 </CardActions>
-               </Card>
-             </Grid>
+                 {/* </CardActions>
+               </Card> */}
+             {/* </Grid>
            ))}
          </Grid>
-       </Container>
-     </main>
-  
+       </Container> */}
+//      </main>
+//    */}
        
 
-   </div>
- );
-}
+//    </div>
+//  );
+// }
 
 
    

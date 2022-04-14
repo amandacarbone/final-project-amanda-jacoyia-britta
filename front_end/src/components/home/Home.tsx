@@ -24,6 +24,7 @@ export function Home() {
             
             {area.map((meal ) => < MealDisplay key={meal.idMeal} meal={meal}></MealDisplay>)}
            
+            
         </div>
         
     );
