@@ -46,29 +46,11 @@ function togglePasswordVisibility() {
 function handleSubmit(e: any) {
 
   e.preventDefault();
-
-  if (email.length === 0 || password.length === 0) {
-    loginError();
-    return;
-  } else {
-    login(email, password).then((data: any) => {
-      if (data) console.log(data);
-      localStorage.setItem('user', JSON.stringify(data));
-      navigate('/home');
-    })
-    .catch((error) => {
-      loginError();
-      console.log(error);
-    });
-  }
-
-
-  // e.preventDefault();
-  // login(email, password).then((data: any) => {
-  //   if (data) console.log(data);
-  //   localStorage.setItem("user", JSON.stringify(data));
-  // });
-  // navigate('/home');
+  
+  login(email, password).then((data: any) => {
+    localStorage.setItem("user", JSON.stringify(data));
+  });
+  navigate('/home');
   
 }
   

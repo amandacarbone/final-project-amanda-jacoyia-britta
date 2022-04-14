@@ -6,7 +6,7 @@ import {
     getMealByArea, 
     getMealById
 } from "../../services/api";
-import { Result } from "./Result";
+
 import { SearchForm } from "./SearchForm";
 import { SearchResultsList } from "./SearchResultsList";
 

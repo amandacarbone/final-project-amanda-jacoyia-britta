@@ -54,7 +54,7 @@ authRoutes.post('/login', (req, res) => {
         password: req.body.password
     }
 
-    db.oneOrNone('SELECT id, email, password FROM users WHERE email = $(email)', { email: req.body.email })
+    db.oneOrNone('SELECT id, email, password, first_name, last_name, isvegetarian, isvegan, ispescatarian FROM users WHERE email = $(email)', { email: req.body.email })
     .then(user => {
         if(!user) {
             return res.status(400).send("Invalid email or password.")

@@ -36,12 +36,15 @@ userRoutes.put("/users/update/:id", (req, res) => {
           res.status(404).json({ error: "User account does not exist" });
         } else {
           db.none(
-            "UPDATE users SET id=${id}, first_name=$(first_name), last_name = $(last_name), email = $(email) where id = ${id}",
+            "UPDATE users SET id=${id}, first_name=$(first_name), last_name = $(last_name), email = $(email), isvegetarian = $(isvegetarian), isvegan = $(isvegan), ispescatarian = $(ispescatarian) where id = ${id}",
             {
               id: +req.params.id,
               first_name: req.body.first_name,
               last_name: req.body.last_name,
               email: req.body.email,
+              isvegetarian: req.body.isvegetarian,
+              isvegan: req.body.isvegan,
+              ispescatarian: req.body.ispescatarian,
             }
           );
   
@@ -50,6 +53,9 @@ userRoutes.put("/users/update/:id", (req, res) => {
       })
   
   });
+
+
+
 
 
 

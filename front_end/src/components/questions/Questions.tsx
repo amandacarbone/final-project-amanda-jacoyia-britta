@@ -42,6 +42,7 @@ export function Questions() {
         setArea((event.target as HTMLInputElement).value);
     };
 
+    
 
     return (
         <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 20 }}>
@@ -74,7 +75,7 @@ export function Questions() {
                     <FormControlLabel value='mediterranean' control={<Radio/>} label='Mediterranean'/>
                 </RadioGroup>
             </FormControl>
-            <Button>Submit</Button>
+            <Button>Submit </Button>
             </Paper>
 
             {/* <QuestionResults category={category} area={area}/> */}
