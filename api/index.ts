@@ -10,11 +10,10 @@ const app = express();
 const port = 3005;
 
 export const db = pg()({
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    password: process.env.SECRET_KEY,
-    database: 'finalproject'
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 app.use(cors());
