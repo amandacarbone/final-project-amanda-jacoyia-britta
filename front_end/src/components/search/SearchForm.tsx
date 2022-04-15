@@ -11,11 +11,16 @@ export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
 
   function submission() {
 
-      props.onSubmit(input);
-      console.log('form working');
+    props.onSubmit(input);
+    // clear form on submit
+    setInput('');
+
+    console.log('form working');
+
   }
 
 return (
+  <div className="searchForm">
 
   <Box
     sx={{
@@ -25,15 +30,35 @@ return (
   >
        
             
-  <TextField fullWidth label="Search" id="fullWidth"  value={input} onChange={(e) => setInput(e.target.value)}/>
+  <TextField 
+    fullWidth 
+    label="Search" 
+    id="fullWidth" 
+    value={input} 
+    onChange={(e) => setInput(e.target.value)}
+  />
     <Button
       fullWidth
+      sx={{
+        mt: 1,
+        mb: 2,
+        color: '#FFFFFF',
+        background: '#939393',
+        '&:hover': {
+          background: '#848484',
+          color: '#FFFFFF'
+        }
+      }}
       onClick={submission}
     >
       Submit
     </Button>
   </Box>
-
+            
+  </div>
 );
 
 }
+
+
+

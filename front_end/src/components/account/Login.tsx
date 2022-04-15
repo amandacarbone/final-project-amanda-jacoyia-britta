@@ -90,7 +90,7 @@ return (
           <Grid
             component='img'
             alt='logo'
-            src='https://i.imgur.com/uSG3fbI.png'
+            src='https://i.imgur.com/JgL0cko.png'
           />
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
@@ -144,7 +144,15 @@ return (
               fullWidth
               type='submit'
               variant='contained'
-              sx={{ mt: 3, mb: 2, background: '#939393' }}
+              sx={{ 
+                mt: 3, 
+                mb: 2, 
+                background: '#939393',
+                '&:hover': {
+                  background: '#848484',
+                  color: '#FFFFFF'
+                }
+              }}
             >
               Login
             </Button>
