@@ -1,7 +1,7 @@
 import express from "express";
 import { db } from "../index";
 import Joi from "joi";
-// import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 const saltRounds = 10;
 
@@ -22,13 +22,13 @@ authRoutes.post('/signup', (req, res) => {
         return res.status(400).send(valid.error);
     }
 
-    // const hash = bcrypt.hashSync(req.body.password, saltRounds);
+    const hash = bcrypt.hashSync(req.body.password, saltRounds);
 
     const newUser = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
-        password: 'abc'
+        password: hash
     }
 
     db.oneOrNone('SELECT id, email FROM users WHERE email = $(email)', { email: req.body.email })
@@ -61,9 +61,9 @@ authRoutes.post('/login', (req, res) => {
         }
 
         console.log(user);
-        // if (!bcrypt.compareSync(userLoginInput.password, user.password)) {
-        //     return res.status(400).send("Invalid email or password.")
-        // }
+        if (!bcrypt.compareSync(userLoginInput.password, user.password)) {
+            return res.status(400).send("Invalid email or password.")
+        }
         res.json(user);
     });
 
