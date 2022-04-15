@@ -4,6 +4,7 @@ import { signUp } from '../../services/Auth';
 import { getUsers } from '../../services/Users';
 import * as Yup from "yup";
 import { Formik } from 'formik';
+import { toast } from 'react-toastify';
 import { 
   Button,
   CssBaseline,
@@ -47,6 +48,17 @@ const initialValues = {
   email: '',
   password: ''
 };
+
+const emailExistError = () => 
+toast.error('Email is already in use', {
+  position: 'top-right',
+  autoClose: 900,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: false,
+  draggable: true,
+  progress: undefined
+});
 
 function togglePasswordVisibility() {
   
@@ -104,8 +116,7 @@ return (
 
               email: Yup.string()
               .email('Invalid email format')
-              .required('Please enter an email address')
-              .test('Unique Email', 'Email already in use', getUsers),
+              .required('Please enter an email address'),
 
               password: Yup.string()
               .required('Please enter a password')
@@ -122,7 +133,12 @@ return (
                   localStorage.setItem('user', JSON.stringify(data));
                 };
                 navigate('/questions');
-              });
+              })
+              .catch((error) => {
+                if (error.response.status === 400) {
+                  emailExistError()
+                }
+              })
             }}
           >
             {({
