@@ -7,7 +7,7 @@ import authRoutes from "./routes/authRoutes";
 
 const app = express();
 
-const port = 3005;
+const port = process.env.PORT;
 
 export const db = pg()({
     connectionString: process.env.DATABASE_URL,
