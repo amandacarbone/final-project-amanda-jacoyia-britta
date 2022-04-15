@@ -1,37 +1,39 @@
 import { useState } from "react";
-
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import {
+  Box,
+  TextField,
+  Button
+} from '@mui/material';
 
 export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
     
-    const [input, setInput] = useState('');
+  const [input, setInput] = useState('');
 
-    function submission() {
-        props.onSubmit(input);
-        console.log('form working');
-    }
+  function submission() {
 
-    return (
-        <div className="searchForm">
+      props.onSubmit(input);
+      console.log('form working');
+  }
 
-<Box
-      sx={{
-        width: 500,
-        maxWidth: '100%',
-      }}
-    >
+return (
+
+  <Box
+    sx={{
+      width: 500,
+      maxWidth: '100%',
+    }}
+  >
        
             
-      <TextField fullWidth label="Search" id="fullWidth"  value={input} onChange={(e) => setInput(e.target.value)}/>
-      <button onClick={submission}>Submit</button>
-    </Box>
-            
-        </div>
-    );
+  <TextField fullWidth label="Search" id="fullWidth"  value={input} onChange={(e) => setInput(e.target.value)}/>
+    <Button
+      fullWidth
+      onClick={submission}
+    >
+      Submit
+    </Button>
+  </Box>
+
+);
 
 }
-
-
-

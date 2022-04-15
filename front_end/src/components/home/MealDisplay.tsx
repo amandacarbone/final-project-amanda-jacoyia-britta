@@ -1,100 +1,113 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { Meal } from "../../models/mealResponse";
-
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { RecipeDetail } from "./../recipes/RecipeDetail";
+import {
+  Button,
+  IconButton,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+  Container
+} from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ThoughtlessContext } from "../../contexts/ThoughtlessContext";
+import { getMealByArea } from "../../services/api";
 
 
+export function MealDisplay() {
 
+  const { addFavorite } = useContext(ThoughtlessContext);
 
-const cards = [1];
-// 2, 3, 4, 5, 6, 7, 8, 9
+  const [meals, setMeals] = useState<Meal[]>([]);
 
-const theme = createTheme();
+    useEffect (()=>{
 
-export function MealDisplay(props:{meal:Meal}) {
+        getMealByArea('American')
+        .then(repsonse => setMeals(repsonse.meals))
 
-  const [meal, setMeal] = useState(props.meal);
-
-  useEffect(() => {
-    setMeal(props.meal)
-  }, [props])
+    }, []);
 
 
 
   return (
 
-
-    <div className='homeContainer'>
-
-<Container sx={{ py: 8 }} maxWidth="md" >
-          {/* End hero unit */}
-          <Grid container spacing={2}
-          direction="row"
-          justifyContent="center"
-          alignItems="center" >
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={8} md={6}>
-                <Card
-                  sx={{maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}
-             >
-      <CardMedia
-        component="img"
-        height="300"
-        image={meal?.strMealThumb}
-        alt="recipeDetails"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-        {meal.strMeal}
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary">
-        {meal?.strCategory}
-        </Typography>
-      </CardContent>
-      <CardActions> 
-      <Button size="small" className='recipebutton'><Link to={`/recipedetail/${meal?.idMeal}`}>Recipe</Link></Button>
-      </CardActions>
-      </Card>
-              </Grid>
-            ))}
+    <Container sx={{ py: 40 }} maxWidth="md">
+      <Grid 
+        container
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={28}
+        margin={-28}
+      >
+        {meals.map((meal) => (
+          <Grid item md={4} lg={4} xl={4} key={meal.idMeal}>
+            <Card
+              sx={{
+                width: 345, 
+                height: 420,
+                margin: -10,
+                display: 'flex',
+                flexDirection: 'column'
+              }}
+            >
+            <CardMedia
+              component='img'
+              height='300'
+              width='300'
+              image={meal?.strMealThumb}
+              alt='recipeDetails'
+            />
+            <CardContent>
+              <Typography
+                gutterBottom
+                component='div'
+                variant="subtitle2"
+              >
+                {meal.strMeal}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button 
+                component={RouterLink} 
+                to={`/recipedetail/${meal.idMeal}`} 
+                sx={{
+                  background: '#939393',
+                  color: '#FFFFFF',
+                  '&:hover': {
+                    background: '#848484',
+                    color: '#FFFFFF'
+                  }
+                }}
+              >
+                Get Recipe
+              </Button>
+              <IconButton
+                aria-label="favorite"
+                sx={{
+                  color: '#ff8896',
+                  background: 'none',
+                  '&:hover': {
+                    color: '#ffbec5',
+                    background: 'none'
+                  }
+                }}
+                onClick={() => addFavorite(meal)}
+              >
+                <FavoriteIcon/>
+              </IconButton>
+            </CardActions>
+            </Card>
           </Grid>
-        </Container>
-     
-    </div>
+        ))}
+        </Grid>
+    </Container>
+
   );
 }
-
-
-
-
-
-
-    {/* <div>
-             <img className='thumbimg' alt='areathumbnail'src={(props.meal.strMealThumb) }></img>
-            
-             </div> */}
-              {/* These will become live links after we host our site */}
-                {/* <a target='_blank' rel='noreferrer' href={'' + props.meal.strIngredient + props.meal.strArea + props.meal.idMeal} ></a> */}
-                   
-                {/* Meal: {props.meal.strIngredient} */}
                 
                
 
