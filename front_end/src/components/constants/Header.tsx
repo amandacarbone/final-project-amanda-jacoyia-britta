@@ -139,7 +139,7 @@ return (
           <img
             height='50px'
             alt='logo'
-            src='https://i.imgur.com/uSG3fbI.png'
+            src='https://i.imgur.com/JgL0cko.png'
           />
         </Toolbar>
       </AppBar>
