@@ -66,6 +66,7 @@ return (
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'fit',
           backgroundPosition: 'center',
+          position: 'static'
         }}
       />
       <Grid 
@@ -88,6 +89,8 @@ return (
         >
           <Grid
             component='img'
+            position='static'
+            width={400}
             alt='logo'
             src='https://i.imgur.com/JgL0cko.png'
           />

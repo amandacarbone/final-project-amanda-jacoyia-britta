@@ -67,6 +67,7 @@ return (
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'fit',
           backgroundPosition: 'center',
+          position: 'static'
         }}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{ background: '#ff8896'}}>
@@ -81,6 +82,8 @@ return (
         >
           <Grid
             component='img'
+            position='static'
+            width={400}
             alt='logo'
             src='https://i.imgur.com/JgL0cko.png'
           />
