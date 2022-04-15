@@ -3,6 +3,7 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { login } from '../../services/Auth';
 import * as Yup from "yup";
 import { Formik } from 'formik';
+import { toast } from 'react-toastify';
 import { 
   Button, 
   CssBaseline,
@@ -46,6 +47,17 @@ const initialValues = {
   email: '',
   password: ''
 };
+
+const invalidLoginError = () => 
+toast.error('Invalid email or password', {
+  position: 'top-right',
+  autoClose: 900,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: false,
+  draggable: true,
+  progress: undefined
+});
 
 function togglePasswordVisibility() {
   
@@ -113,7 +125,12 @@ return (
                   localStorage.setItem('user', JSON.stringify(data));
                 }
                 navigate('/home');
-              });
+              })
+              .catch((error) => {
+                if (error.response.status === 400) {
+                  invalidLoginError()
+                }
+              })
             }}
           >
             {({
