@@ -14,6 +14,7 @@ import { ProfileDetails } from './components/profile/ProfileDetail';
 import { RecipeDetail } from './components/recipes/RecipeDetail';
 import { Update } from './components/profile/Update';
 import { Recipes } from './components/recipes/Recipes';
+import { Favorites } from './components/favorites/Favorites';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,7 +33,7 @@ ReactDOM.render(
       <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
       <Route path='/recipes/:id' element={<Recipes/>}/>
       <Route path='/update' element={<Update/>}/>
-      
+      <Route path='/favorites' element={<Favorites/>}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>
