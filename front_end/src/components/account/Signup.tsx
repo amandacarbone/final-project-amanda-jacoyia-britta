@@ -5,6 +5,7 @@ import { getUsers } from '../../services/Users';
 import * as Yup from "yup";
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { 
   Button,
   CssBaseline,

@@ -28,8 +28,7 @@ ReactDOM.render(
       <Route path='/home' element={<Home/>}/>
       <Route path='/questions' element={<Questions/>}/>
       <Route path='/search' element={<SearchPage/>}/>
-      <Route path='/profile' element={<Profile/>}/>
-      <Route path='/profile/:id' element={<ProfileDetails />}/>
+      <Route path='/profile/:id' element={<Profile />}/>
       <Route path='/recipedetail/:id' element={<RecipeDetail/>}/>
       <Route path='/recipes/:id' element={<Recipes/>}/>
       <Route path='/update' element={<Update/>}/>
