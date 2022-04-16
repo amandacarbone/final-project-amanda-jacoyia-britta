@@ -155,6 +155,7 @@ return (
         variant='temporary'
         anchor='left'
         open={open}
+        onClick={() => setOpen(false)}
       >
         <DrawerHeader>
           <IconButton onClick={() => setOpen(false)}>
