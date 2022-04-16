@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react"
 import { 
@@ -14,30 +15,10 @@ export function SearchPage() {
 
     const [searchItem, setSearchItem] = useState('');
     const [results, setResults] = useState <any>([]);
-    const [noResults, setNoResults] = useState('');
-
-
    
    //This will use the services page to get the search results
   useEffect(() => {
-        // if(!searchItem){
-        //     setNoResults('No recipes found with that name, please try again')
-        // }
-        // else if(searchItem == "chicken" || "beef" || "dessert" || "seafood" || "vegan" || "miscellaneous" || "lamb" || "pasta" || "side" || "starter" || "goat" || "vegetarian" || "goat")
-        // {
-        // getMealByCategory(searchItem).then(data => setResults(data.meals));
-        // console.log("search by category");
-        // console.log(window.location);
-        // } 
-        // else if (searchItem == "american" || "british" || "canadian" || "chinese" || "croatian" || "dutch" || "egyptian" || "french" || "greek" || "indian" || "irish" || "italian" || "jamaican" || "japanese" || "kenyan" || "mexican" || "malaysian" || "moroccan" || "spanish" || "thai" || "turkish" || "polish" || "portuguese" || "russian" || "tunisian" || "unknown" || "vietnamese")
-        // {
-        //     getMealByArea(searchItem).then(data => setResults(data.meals));
-        //     console.log("search by area")
-        //     console.log(window.location);
-        // }else {
-        //     getMealByIngredient(searchItem).then((data: { meals: any; }) => setResults(data.meals))
-        //     console.log("search by ingredient")
-        // }
+        
 
             switch(searchItem) {
                 case "chicken": getMealByCategory(searchItem).then(data => setResults(data.meals));
@@ -116,14 +97,6 @@ export function SearchPage() {
                 break;
                 default: getMealByIngredient(searchItem).then((data: { meals: any; }) => setResults(data.meals));
             }
-
-        // if (searchItem.length) {
-        //     getMealByIngredient(searchItem).then(response => {
-        //         setResults(response.meals)
-        //         console.log(results)
-        //         console.log(searchItem);
-               
-        //     });
                 
         }
     , [searchItem]);
@@ -134,17 +107,21 @@ export function SearchPage() {
     return(
 
         <div>
-
-            {/* <input className='searchTerm' placeholder= '' value={searchItem} onChange={(e) => setSearchItem (e.target.value) } type='text' name='SearchRecipe' />
-
-            {results.map((recipe, i) => <RecipeSearch key={i} recipe={recipe}></RecipeSearch>)}
-        */}
        
        <SearchForm onSubmit={setSearchItem}></SearchForm>
-       <SearchResultsList meals={results}></SearchResultsList>
-         <p>{noResults}</p>
 
-       {/* {console.log(getMealByArea("american"))} */}
+       {results === null ? 
+        <Typography 
+            variant='h5'
+            mt={20}
+            sx={{
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center'
+            }}
+            >
+            No results
+        </Typography> : <SearchResultsList meals={results}></SearchResultsList>}
        
         </div>
 

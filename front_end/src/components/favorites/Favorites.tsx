@@ -16,7 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 export function Favorites() {
 
-    const { favoriteMeals, removeFavorite } = useContext(ThoughtlessContext);
+  const { favoriteMeals, removeFavorite } = useContext(ThoughtlessContext);
 
     return (
 
