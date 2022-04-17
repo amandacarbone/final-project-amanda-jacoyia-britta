@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     CssBaseline,
     Container,
@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { QuestionResults } from './QuestionResults';
 import { getMealByArea, getMealById } from '../../services/api';
+import{Meal} from '../../models/mealResponse';
 
 export function Questions() {
 
@@ -24,30 +25,47 @@ export function Questions() {
         setCategory((event.target as HTMLInputElement).value);
     };
 
-    function handleCuisineChange(event: React.ChangeEvent<HTMLInputElement>) {
-        setArea((event.target as HTMLInputElement).value);
-        //define an empty array to hold the final results
-        const fullResults: any[] = []
-        //caliing the api with the area passed in, then storing the results in local storage
+    const fullResults: any[] = []
+     //grabbing the results from local storage
+    const areaArray = JSON.parse(localStorage.getItem('area-results') as string);
+    useEffect(() => {
+       if  (area !== null){
+        //calling the api with the area passed in, then storing the results in local storage
         getMealByArea(area).then(data => localStorage.setItem('area-results', JSON.stringify(data.meals))
-        ).then(() => {
-            //grabbing the results from local storage and mapping through them to get the full details response that includes str.catergory property
-        const areaArray = JSON.parse(localStorage.getItem('area-results') as string);  
-        areaArray.map((meal:any) => {
-            //calling the api with each id to get the full details response
-            getMealById(meal.idMeal).then(data => { 
-                //Getting the full detail response, in seperate objects, so now push to empty array
-                console.log(data)
-                //full results returns as a promise and is "empty" even though it shows the correct values in the console log.
-                //stuck here on how to use async to await the the results and actually push them to the array. Right now i think the promised array is being "pushed" which isn't really there.
-                fullResults.push(data)
-                //idea was once the results were in the array, i would filter through fullResults and find all that str.Caterogy == category.
-        })
-    });
-}
-)
+        )}
+
+      }, [area]);
+
+      useEffect(() => {
+        if (category == null || area == null){
+            setShowResults(false)
+        }else if (areaArray !== null){
+        
+        //mapping through to get the full details response that includes str.catergory property by calling getmealbyid
+        areaArray.map((meal:Meal)=> {
+            const allMeals = getMealById(meal.idMeal)
+            //Getting the full detail response, in seperate objects, so now push to empty array fullResults
+                console.log(allMeals)
+                fullResults.push(allMeals);
+            
+        });
+        //Promise.all is something I found that I thought would return a non-promise but I don't think that's its actual function lol
+        Promise.all(fullResults).then(data => {
+            //this filters through the full results array and console logs the category on each meal, YAY! but....
+            //I would want to ideally filter through the full results array and find all that str.Caterogy == category.
+            //but this is where it is stuck in a promise.
+            //matched returns an empty array when I write the full filter function as:
+            // const matched = fullResults.filter(meal => meal.meals[0].strCategory === category)
+            const matched = data.filter(meal => console.log(meal.meals[0].strCategory))
+            
+        }
+        )};
+      },[area, category]);
+
+        //define an empty array to hold the final results
+       
       
-};
+
 
     function handleShowResults() {
         setShowResults(true)
@@ -76,7 +94,7 @@ export function Questions() {
                         What are you in the mood for?
                     </Typography>
                     <FormControl>
-                        <RadioGroup name='radio-buttons-group' value={area} onChange={handleCuisineChange}>
+                        <RadioGroup name='radio-buttons-group' value={area} onChange={(event) => setArea((event.target as HTMLInputElement).value)}>
                             <FormControlLabel value='american' control={<Radio/>} label='American'/>
                             <FormControlLabel value='mexican' control={<Radio/>} label='Mexican'/>
                             <FormControlLabel value='asian' control={<Radio/>} label='Asian'/>
