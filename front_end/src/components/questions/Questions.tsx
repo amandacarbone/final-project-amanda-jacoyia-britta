@@ -12,6 +12,7 @@ import {
     Divider
 } from '@mui/material';
 import { QuestionResults } from './QuestionResults';
+import { getMealByArea, getMealById } from '../../services/api';
 
 export function Questions() {
 
@@ -25,7 +26,28 @@ export function Questions() {
 
     function handleCuisineChange(event: React.ChangeEvent<HTMLInputElement>) {
         setArea((event.target as HTMLInputElement).value);
-    };
+        //define an empty array to hold the final results
+        const fullResults: any[] = []
+        //caliing the api with the area passed in, then storing the results in local storage
+        getMealByArea(area).then(data => localStorage.setItem('area-results', JSON.stringify(data.meals))
+        ).then(() => {
+            //grabbing the results from local storage and mapping through them to get the full details response that includes str.catergory property
+        const areaArray = JSON.parse(localStorage.getItem('area-results') as string);  
+        areaArray.map((meal:any) => {
+            //calling the api with each id to get the full details response
+            getMealById(meal.idMeal).then(data => { 
+                //Getting the full detail response, in seperate objects, so now push to empty array
+                console.log(data)
+                //full results returns as a promise and is "empty" even though it shows the correct values in the console log.
+                //stuck here on how to use async to await the the results and actually push them to the array. Right now i think the promised array is being "pushed" which isn't really there.
+                fullResults.push(data)
+                //idea was once the results were in the array, i would filter through fullResults and find all that str.Caterogy == category.
+        })
+    });
+}
+)
+      
+};
 
     function handleShowResults() {
         setShowResults(true)
