@@ -24,7 +24,7 @@ const { addFavorite } = useContext(ThoughtlessContext);
 
 return(
 
-    <Container sx={{ py: 40 }} maxWidth="md">
+    <Container sx={{ py: 20 }} maxWidth="md">
       <Grid 
         container
         direction='row'

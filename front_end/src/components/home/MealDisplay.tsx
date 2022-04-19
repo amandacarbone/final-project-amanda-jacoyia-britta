@@ -15,6 +15,7 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ThoughtlessContext } from "../../contexts/ThoughtlessContext";
 import { getMealByArea } from "../../services/api";
+import { SearchForm } from "../search/SearchForm";
 
 
 export function MealDisplay() {
@@ -22,19 +23,23 @@ export function MealDisplay() {
   const { addFavorite } = useContext(ThoughtlessContext);
 
   const [meals, setMeals] = useState<Meal[]>([]);
+  const [searchItem, setSearchItem] = useState('');
 
-    useEffect (()=>{
+  useEffect (()=>{
 
-        getMealByArea('American')
-        .then(repsonse => setMeals(repsonse.meals))
+      getMealByArea('American')
+      .then(repsonse => setMeals(repsonse.meals))
 
-    }, []);
+  }, []);
 
 
 
   return (
 
-    <Container sx={{ py: 40 }} maxWidth="md">
+    <Container sx={{ py: 2 }} maxWidth="md">
+      <Container sx={{ mb: 15 }}>
+        <SearchForm onSubmit={setSearchItem}/>
+      </Container>
       <Grid 
         container
         direction='row'

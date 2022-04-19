@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { login } from '../../services/Auth';
-import { ToastContainer, toast } from "react-toastify";
+import * as Yup from "yup";
+import { Formik } from 'formik';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { 
   Button, 
   CssBaseline,
@@ -10,31 +13,51 @@ import {
   Paper,
   Box,
   TextField,
-  IconButton
+  IconButton,
+  Link
 } from '@mui/material';
+import { makeStyles, createStyles } from '@mui/styles';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Lock from '@mui/icons-material/Lock';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import '../../styles/Account.css';
+
+const focusedColor = "white";
+const useStyles = makeStyles({
+  root: {
+    // input label when focused
+    "& label.Mui-focused": {
+      color: focusedColor
+    },
+    // focused color for input with variant='standard'
+    "& .MuiInput-underline:after": {
+      borderBottomColor: focusedColor
+    }
+  }
+});
   
 export function Login() {
 
 const navigate = useNavigate();
 
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
+const classes = useStyles();
+
 const [showPassword, setShowPassword] = useState(false);
 
-const loginError = () =>
-toast.error("Invalid email or password", {
-  position: "top-right",
+const initialValues = {
+  email: '',
+  password: ''
+};
+
+const invalidLoginError = () => 
+toast.error('Invalid email or password', {
+  position: 'top-right',
   autoClose: 900,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: false,
   draggable: true,
-  progress: undefined,
+  progress: undefined
 });
 
 function togglePasswordVisibility() {
@@ -42,17 +65,6 @@ function togglePasswordVisibility() {
   setShowPassword(showPassword ? false : true);
 
 };
-
-function handleSubmit(e: any) {
-
-  e.preventDefault();
-  
-  login(email, password).then((data: any) => {
-    localStorage.setItem("user", JSON.stringify(data));
-  });
-  navigate('/home');
-  
-}
   
 return (
   <Grid container component='main' sx={{ height: '100vh' }}>
@@ -67,6 +79,7 @@ return (
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'fit',
           backgroundPosition: 'center',
+          position: 'static'
         }}
       />
       <Grid 
@@ -89,74 +102,142 @@ return (
         >
           <Grid
             component='img'
+            position='static'
+            width={400}
             alt='logo'
-            src='https://i.imgur.com/uSG3fbI.png'
+            src='https://i.imgur.com/JgL0cko.png'
           />
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-            <TextField
-              autoFocus
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>
-                    <AccountCircle/>
-                  </InputAdornment>
-                )
-              }}
-              variant='standard'
-              margin='normal'
-              id='email'
-              name='email'
-              label='Email'
-              type='email'
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-            />
-            <TextField
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>
-                    <Lock/>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position='end'>
-                    <IconButton
-                      aria-label='toggle password visibility'
-                      onClick={togglePasswordVisibility}
-                    >
-                      {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
-              variant='standard'
-              margin='normal'
-              id='password'
-              name='password'
-              label='Password'
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-            <Button
-              fullWidth
-              type='submit'
-              variant='contained'
-              sx={{ mt: 3, mb: 2, background: '#939393' }}
-            >
-              Login
-            </Button>
-            <ToastContainer/>
-            <Grid container>
-              <Grid item>
-                <Link to='/signup'>
-                  Don't have an account? Sign Up
-                </Link>
+          <Formik
+            initialValues={{
+              ...initialValues
+            }}
+            validationSchema={Yup.object().shape({
+              email: Yup.string()
+              .required('Please enter an email address')
+              .email('Invalid email format'),
+
+              password: Yup.string()
+              .required('Please enter a password')
+            })}
+            onSubmit={(values) => {
+              login(values.email, values.password)
+              .then((data: any) => {
+                if (data) {
+                  localStorage.setItem('user', JSON.stringify(data));
+                }
+                navigate('/home');
+              })
+              .catch((error) => {
+                if (error.response.status === 400) {
+                  invalidLoginError()
+                }
+              })
+            }}
+          >
+            {({
+              errors,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              isValid,
+              touched,
+              values
+            }) => (
+              <Box component="form" autoComplete='off' noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <TextField
+                error={Boolean(touched.email && errors.email)}
+                helperText={touched.email && errors.email}
+                autoFocus
+                required
+                fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <AccountCircle/>
+                    </InputAdornment>
+                  )
+                }}
+                className={classes.root}
+                variant='standard'
+                margin='normal'
+                id='email'
+                name='email'
+                label='Email'
+                type='email'
+                value={values.email}
+                onBlur={handleBlur}
+                onChange={handleChange}
+              />
+              <TextField
+                error={Boolean(touched.password && errors.password)}
+                helperText={touched.password && errors.password}
+                required
+                fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <Lock/>
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <IconButton
+                        aria-label='toggle password visibility'
+                        onClick={togglePasswordVisibility}
+                      >
+                        {showPassword ? <VisibilityOffIcon/> : <VisibilityIcon/>}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
+                className={classes.root}
+                variant='standard'
+                margin='normal'
+                id='password'
+                name='password'
+                label='Password'
+                type={showPassword ? 'text' : 'password'}
+                value={values.password}
+                onBlur={handleBlur}
+                onChange={handleChange}
+              />
+              <Button
+                fullWidth
+                disabled={Boolean(!isValid)}
+                type='submit'
+                variant='contained'
+                sx={{ 
+                  mt: 3, 
+                  mb: 2, 
+                  background: '#939393',
+                  '&:hover': {
+                    background: '#848484',
+                    color: '#FFFFFF'
+                  }
+                }}
+              >
+                Login
+              </Button>
+              <Grid container>
+                <Grid item>
+                  <Link
+                    component={RouterLink}
+                    to={'/signup'}
+                    sx={{
+                      textDecoration: 'none',
+                      color: '#FFFFFF',
+                      '&:hover': {
+                        color: '#000000'
+                      }
+                    }}
+                  >
+                    Don't have an account? Sign Up
+                  </Link>
+                </Grid>
               </Grid>
-            </Grid>
-          </Box>
+            </Box>
+            )}
+          </Formik>
         </Box>
       </Grid>
     </Grid>

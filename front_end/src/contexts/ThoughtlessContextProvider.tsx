@@ -3,6 +3,7 @@ import { User } from '../models/User';
 import { Meal } from '../models/mealResponse';
 import { ThoughtlessContext } from './ThoughtlessContext';
 import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 export function ThoughtlessContextProvider(props: { children: ReactNode }) {
 
@@ -59,6 +60,7 @@ export function ThoughtlessContextProvider(props: { children: ReactNode }) {
             removeFavorite
         }}>
             {props.children}
+            <ToastContainer/>
         </ThoughtlessContext.Provider>
 
     );

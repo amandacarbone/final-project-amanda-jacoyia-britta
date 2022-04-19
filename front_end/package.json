@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
     "@mui/styled-engine-sc": "^5.5.2",
+    "@mui/styles": "^5.6.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -17,11 +18,14 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "axios": "^0.26.1",
+<<<<<<< HEAD
     "firebase": "^9.6.11",
     "joi": "^17.6.0",
+=======
+    "formik": "^2.2.9",
+>>>>>>> 29ae466fb4d3982ea0dce98f063ae3ef21a3384c
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^7.29.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
