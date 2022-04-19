@@ -6,13 +6,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-  measurementId: process.env.MEASUREMENT_ID
+  apiKey: "AIzaSyB9QAl1Ubi4eRxP4akDfzPHiRsLZCG2pIg",
+  authDomain: "thoughtless-da50e.firebaseapp.com",
+  projectId: "thoughtless-da50e",
+  storageBucket: "thoughtless-da50e.appspot.com",
+  messagingSenderId: "57802830627",
+  appId: "1:57802830627:web:aafe84cdd884bf1c239296",
+  measurementId: "G-C588CKV8FH"
 };
 
 const app = initializeApp(firebaseConfig);
