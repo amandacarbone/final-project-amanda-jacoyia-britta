@@ -18,12 +18,9 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "axios": "^0.26.1",
-<<<<<<< HEAD
     "firebase": "^9.6.11",
     "joi": "^17.6.0",
-=======
     "formik": "^2.2.9",
->>>>>>> 29ae466fb4d3982ea0dce98f063ae3ef21a3384c
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.3.0",
