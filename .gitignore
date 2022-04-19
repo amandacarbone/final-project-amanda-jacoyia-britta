@@ -3,3 +3,4 @@ api/.env
 .env
 
 front_end/node_modules
+front_end/.env
