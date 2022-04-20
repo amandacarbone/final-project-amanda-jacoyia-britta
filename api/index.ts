@@ -10,11 +10,15 @@ const app = express();
 const port = 3005;
 
 export const db = pg()({
-    host: process.env.HOST,
+    host: 'ec2-52-54-212-232.compute-1.amazonaws.com',
     port: 5432,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    user: 'ulxojjsitockqx',
+    password: '6ee1cf0811a753d5e091266697057f822b0f7d3cea06095cf5976d2f58c5c065',
+    database: 'd727733s9ecqvu',
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 app.use(cors());
