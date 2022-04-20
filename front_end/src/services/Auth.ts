@@ -3,7 +3,7 @@ import { User } from '../models/User';
 
 export function signUp(first_name: string, last_name: string, email: string, password: string) {
     return axios
-    .post('http://localhost:3005/signup', {
+    .post('https://thoughtless-app-alpha.herokuapp.com/signup', {
         first_name: first_name,
         last_name: last_name,
         email: email,
@@ -16,7 +16,7 @@ export function signUp(first_name: string, last_name: string, email: string, pas
 
 export function login(email: string, password: string) {
     return axios
-    .post('http://localhost:3005/login', {
+    .post('https://thoughtless-app-alpha.herokuapp.com/login', {
         email: email,
         password: password
     })
