@@ -96,7 +96,12 @@ return (
           <Grid
             component='img'
             position='static'
-            width={400}
+            sx={{
+              width: {
+                xs: '300px',
+                md: '400px'
+              }
+            }}
             alt='logo'
             src='https://i.imgur.com/JgL0cko.png'
           />
@@ -144,7 +149,6 @@ return (
           >
             {({
               errors,
-              handleBlur,
               handleChange,
               handleSubmit,
               isValid,
@@ -165,7 +169,6 @@ return (
                   label='First Name'
                   type='text'
                   value={values.first_name}
-                  onBlur={handleBlur}
                   onChange={handleChange}
                 />
                 <TextField
@@ -181,7 +184,6 @@ return (
                   label='Last Name'
                   type='text'
                   value={values.last_name}
-                  onBlur={handleBlur}
                   onChange={handleChange}
                 />
                 <TextField
@@ -197,7 +199,6 @@ return (
                   label='Email'
                   type='email'
                   value={values.email}
-                  onBlur={handleBlur}
                   onChange={handleChange}
                 />
                 <TextField
@@ -213,7 +214,6 @@ return (
                   label='Password'
                   type={showPassword ? 'text' : 'password'}
                   value={values.password}
-                  onBlur={handleBlur}
                   onChange={handleChange}
                   InputProps={{
                     endAdornment: (

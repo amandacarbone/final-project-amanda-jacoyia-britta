@@ -30,18 +30,26 @@ return (
   >
        
             
-  <TextField 
-    fullWidth 
-    label="Search" 
-    id="fullWidth" 
+  <TextField
+    label="Search"
+    sx={{
+      width: {
+        xs: 350
+      }
+    }} 
     value={input} 
     onChange={(e) => setInput(e.target.value)}
   />
     <Button
-      fullWidth
       sx={{
         mt: 1,
-        mb: 2,
+        mb: {
+          xs: 1,
+          md: 2
+        },
+        width: {
+          xs: 350
+        },
         color: '#FFFFFF',
         background: '#939393',
         '&:hover': {

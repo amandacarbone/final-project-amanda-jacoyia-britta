@@ -7,20 +7,23 @@ import authRoutes from "./routes/authRoutes";
 
 const app = express();
 
-const port = 3005;
-
-export const db = pg()({
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    password: process.env.SECRET_KEY,
-    database: 'finalproject'
-   
-   
-});
+const port = process.env.PORT || 3005;
 
 app.use(cors());
 app.use(express.json());
+
+export const db = pg()({
+    ssl: {
+        rejectUnauthorized: false
+    },
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT!),
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    connectionString: process.env.DATABASE_URL,
+});
+
 app.use('/', userRoutes);
 app.use('/', authRoutes);
 
