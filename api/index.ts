@@ -15,10 +15,6 @@ export const db = pg()({
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
 });
 
 app.use(cors());
