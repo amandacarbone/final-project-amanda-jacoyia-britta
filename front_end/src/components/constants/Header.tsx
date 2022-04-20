@@ -102,9 +102,9 @@ export function Header() {
   
   const resourcesNav = [
     {
-      name: 'Recipes',
+      name: 'About',
       icon: <MenuBookIcon/>,
-      onClick: () => navigate('/recipedetail')
+      onClick: () => navigate('/about')
     }
   ]
   

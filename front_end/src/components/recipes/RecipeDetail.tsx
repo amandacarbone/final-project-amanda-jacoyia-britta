@@ -100,9 +100,6 @@ export function RecipeDetail(){
                    {recipeDetail?.strInstructions}
         </Typography>
       </CardContent>
-      <CardActions> 
-      <Button size="small" className='recipebutton'><Link to={`/recipedetail/${recipeDetail?.idMeal}`}>Recipe</Link></Button>
-      </CardActions>
       </Card>
               </Grid>
             ))}

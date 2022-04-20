@@ -15,6 +15,7 @@ import { RecipeDetail } from './components/recipes/RecipeDetail';
 import { Update } from './components/profile/Update';
 import { Recipes } from './components/recipes/Recipes';
 import { Favorites } from './components/favorites/Favorites';
+import { About } from './components/about/About';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,6 +34,7 @@ ReactDOM.render(
       <Route path='/recipes/:id' element={<Recipes/>}/>
       <Route path='/update' element={<Update/>}/>
       <Route path='/favorites' element={<Favorites/>}/>
+      <Route path='/about' element={<About/>}/>
       </Routes>
     </BrowserRouter>
     </ThoughtlessContextProvider>

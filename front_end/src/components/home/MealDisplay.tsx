@@ -35,8 +35,21 @@ export function MealDisplay() {
 
   return (
 
-    <Container sx={{ py: 2 }} maxWidth="md">
-      <Grid 
+    <Container sx={{ py: 15 }} maxWidth="md">
+      <Typography
+        variant='h3'
+        align='center'
+      >
+        Welcome to Thoughtless!
+      </Typography>
+      <Typography
+        align='center'
+      >
+      Thoughtless helps to answer one of the most difficult questions to ever be asked: 
+      "What do you want for dinner?"
+      We serve up random a shortlist of recipes (with photos, ingriedients, and instructions) to get your mouth watering and your mind relaxing.
+      </Typography>
+      <Grid
         container
         direction='row'
         justifyContent='center'
