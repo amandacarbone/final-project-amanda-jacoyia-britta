@@ -1,1 +1,1 @@
-web: node index.ts
+web: npm install --prefix api && npm start --prefix api
