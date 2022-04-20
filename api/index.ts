@@ -7,21 +7,24 @@ import authRoutes from "./routes/authRoutes";
 
 const app = express();
 
-export const db = pg()({
-    // host: 'ec2-52-54-212-232.compute-1.amazonaws.com',
-    // port: 5432,
-    // user: 'ulxojjsitockqx',
-    // password: '6ee1cf0811a753d5e091266697057f822b0f7d3cea06095cf5976d2f58c5c065',
-    // database: 'd727733s9ecqvu',
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const port = process.env.PORT || 3005;
 
 app.use(cors());
 app.use(express.json());
+
+export const db = pg()({
+    ssl: {
+        rejectUnauthorized: false
+    },
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT!),
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    connectionString: process.env.DATABASE_URL,
+});
+
 app.use('/', userRoutes);
 app.use('/', authRoutes);
 
-app.listen(process.env.PORT, () => console.log(`Server is listening on port ${process.env.PORT}.`));
+app.listen(port, () => console.log(`Server is listening on port ${port}.`));
