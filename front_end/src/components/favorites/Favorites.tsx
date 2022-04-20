@@ -10,7 +10,8 @@ import {
     CardMedia,
     Grid,
     Typography,
-    Container
+    Container,
+    Box
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -20,7 +21,16 @@ export function Favorites() {
 
     return (
 
-        <Container sx={{ py: 40 }} maxWidth="md">
+      <Container sx={{ py: 40, display: 'flex', flexDirection: 'column' }} maxWidth="md">
+      <Box sx={{
+        transform: 'translate(-60%, -550%)'
+      }}>
+        <Typography
+          variant='h4'
+        >
+          Favorites
+        </Typography>
+      </Box>
       <Grid 
         container
         direction='row'

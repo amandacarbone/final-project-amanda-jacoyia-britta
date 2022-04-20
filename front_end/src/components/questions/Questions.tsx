@@ -9,7 +9,8 @@ import {
     FormControlLabel,
     RadioGroup,
     Radio,
-    Divider
+    Divider,
+    Box
 } from '@mui/material';
 import { QuestionResults } from './QuestionResults';
 import { getMealByArea, getMealById } from '../../services/api';

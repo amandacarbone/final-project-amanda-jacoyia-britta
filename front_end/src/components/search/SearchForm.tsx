@@ -2,7 +2,8 @@ import { useState } from "react";
 import {
   Box,
   TextField,
-  Button
+  Button,
+  Typography
 } from '@mui/material';
 
 export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
@@ -22,14 +23,23 @@ export function SearchForm(props: { onSubmit: (searchItem: string) => void }) {
 return (
   <div className="searchForm">
 
+    <Box sx={{
+      transform: 'translate(-550%, -60%)'
+    }}>
+      <Typography
+        variant='h4'
+      >
+        Search
+      </Typography>
+    </Box>
+
   <Box
     sx={{
       width: 500,
       maxWidth: '100%',
     }}
   >
-       
-            
+
   <TextField
     label="Search"
     sx={{
