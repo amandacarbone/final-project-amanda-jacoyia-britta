@@ -1,20 +1,17 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from "express";
 import cors from 'cors';
 import pg from 'pg-promise';
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
 
+dotenv.config();
+
 const app = express();
 
-const port = 3005;
+const port = process.env.PORT || 3005;
 
 export const db = pg()({
-    host: process.env.HOST,
-    port: 5432,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
