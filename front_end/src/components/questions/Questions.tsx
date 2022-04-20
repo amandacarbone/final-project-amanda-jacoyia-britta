@@ -71,7 +71,7 @@ export function Questions() {
                             <FormControlLabel value='vegetarian' control={<Radio/>} label='Vegetarian'/>
                         </RadioGroup>
                     </FormControl>
-                    <Divider sx={{ mt: 5, mb: 5 }}/>
+                    {/* <Divider sx={{ mt: 5, mb: 5 }}/>
                     <Typography variant="h6" align='center' gutterBottom>
                         What are you in the mood for?
                     </Typography>
@@ -83,7 +83,7 @@ export function Questions() {
                             <FormControlLabel value='indian' control={<Radio/>} label='Indian'/>
                             <FormControlLabel value='mediterranean' control={<Radio/>} label='Mediterranean'/>
                         </RadioGroup>
-                    </FormControl>
+                    </FormControl> */}
                     <Button
                         fullWidth
                         variant='contained'

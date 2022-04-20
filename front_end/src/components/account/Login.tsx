@@ -103,8 +103,13 @@ return (
           <Grid
             component='img'
             position='static'
-            width={400}
             alt='logo'
+            sx={{
+              width: {
+                xs: '300px',
+                md: '400px'
+              }
+            }}
             src='https://i.imgur.com/JgL0cko.png'
           />
           <Formik
@@ -136,7 +141,6 @@ return (
           >
             {({
               errors,
-              handleBlur,
               handleChange,
               handleSubmit,
               isValid,
@@ -165,7 +169,6 @@ return (
                 label='Email'
                 type='email'
                 value={values.email}
-                onBlur={handleBlur}
                 onChange={handleChange}
               />
               <TextField
@@ -198,7 +201,6 @@ return (
                 label='Password'
                 type={showPassword ? 'text' : 'password'}
                 value={values.password}
-                onBlur={handleBlur}
                 onChange={handleChange}
               />
               <Button

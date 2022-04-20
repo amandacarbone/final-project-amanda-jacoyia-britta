@@ -24,6 +24,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CloseIcon from '@mui/icons-material/Close';
 import { Favorites } from "../favorites/Favorites";
+import zIndex from "@mui/material/styles/zIndex";
 
 const editProfileModalStyle = {
     position: 'absolute' as 'absolute',
@@ -114,11 +115,29 @@ export function Profile(){
     return(
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid 
+          item 
+          xs={12} 
+          sm={5} 
+          md={5} 
+          component={Paper} 
+          elevation={6} 
+          square
+        >
           <Box
             sx={{
-              my: 30,
-              mx: 4,
+              my: {
+                xs: 10,
+                sm: 30,
+                md: 30
+              },
+              mx: {
+                xs: 2,
+                md: 4
+              },
+              height: {
+                xs: 200
+              },
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -127,8 +146,16 @@ export function Profile(){
             <Avatar
                 src={'/static/img/avatars/default-profile.svg'}
                 sx={{
-                    height: 200,
-                    width: 200,
+                    height: {
+                      xs: 100,
+                      sm: 200,
+                      md: 200
+                    },
+                    width: {
+                      xs: 100,
+                      sm: 200,
+                      md: 200
+                    },
                 }}>
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -158,13 +185,25 @@ export function Profile(){
         </Grid>
         <Grid
           item
-          xs={false}
-          sm={4}
+          xs={15}
+          sm={7}
           md={7}
-          margin={-3}
           sx={{
-              maxHeight: '100vh',
-              overflow: 'auto'
+            maxHeight: '115vh',
+            overflow: 'auto',
+            zIndex: {
+              xs: -1,
+              sm: 0,
+              md: 0
+            },
+            mt: {
+              xs: -25,
+              sm: -20,
+              md: -20
+            },
+            ml: {
+              md: -3
+            }
           }}
         >
             <Favorites/>
