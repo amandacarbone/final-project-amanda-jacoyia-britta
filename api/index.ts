@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from "express";
 import cors from 'cors';
 import pg from 'pg-promise';
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
-
-dotenv.config();
 
 const app = express();
 
@@ -17,9 +15,10 @@ export const db = pg()({
     user: process.env.USER,
     password: process.env.PASSWORD,
     database: process.env.DATABASE,
+    connectionString: process.env.DATABASE_URL,
     ssl: {
-        rejectUnauthorized: false,
-    },
+        rejectUnauthorized: false
+    }
 });
 
 app.use(cors());
