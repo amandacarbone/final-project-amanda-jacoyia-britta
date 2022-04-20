@@ -9,13 +9,17 @@ dotenv.config();
 
 const app = express();
 
-const port = process.env.PORT || 3005;
+const port = 3005;
 
 export const db = pg()({
-    connectionString: process.env.DATABASE_URL,
+    host: process.env.HOST,
+    port: 5432,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
     ssl: {
-        rejectUnauthorized: false
-    }
+        rejectUnauthorized: false,
+    },
 });
 
 app.use(cors());

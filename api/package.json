@@ -1,12 +1,18 @@
 {
-  "name": "api",
+  "name": "final-project-amanda-jacoyia-britta",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "start:dev": "nodemon index.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandacarbone/final-project-amanda-jacoyia-britta.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
