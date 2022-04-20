@@ -15,7 +15,6 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { ThoughtlessContext } from "../../contexts/ThoughtlessContext";
 import { getMealByArea } from "../../services/api";
-import { SearchForm } from "../search/SearchForm";
 
 
 export function MealDisplay() {
@@ -37,16 +36,15 @@ export function MealDisplay() {
   return (
 
     <Container sx={{ py: 2 }} maxWidth="md">
-      <Container sx={{ mb: 15 }}>
-        <SearchForm onSubmit={setSearchItem}/>
-      </Container>
       <Grid 
         container
         direction='row'
         justifyContent='center'
         alignItems='center'
-        spacing={28}
-        margin={-28}
+        spacing={27}
+        sx={{
+          mt: -5
+        }}
       >
         {meals.map((meal) => (
           <Grid item md={4} lg={4} xl={4} key={meal.idMeal}>

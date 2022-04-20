@@ -136,8 +136,18 @@ return (
           >
             <MenuIcon />
           </IconButton>
-          <img
-            height='50px'
+          <Box
+            component='img'
+            position='static'
+            sx={{
+              height: {
+                xs: '50px'
+              },
+              transform: {
+                xs: 'translateX(25px)',
+                sm: 'translateX(5px)'
+              }
+            }}
             alt='logo'
             src='https://i.imgur.com/JgL0cko.png'
           />
