@@ -1,6 +1,6 @@
 # Thoughtless
 
-Thoughtless helps to answer what is arguably one of the most difficult questions to ever be asked:
+Thoughtless helps to answer one of the most difficult questions to ever be asked:
 
 **"What do you want for dinner?"**
 
